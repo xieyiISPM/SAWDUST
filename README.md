@@ -3,7 +3,7 @@
 ## Sponsor Name: Ashby's Cabinetry
 
 ## Project Description:
-Build a windows application for Ashny's Cabinetry that lets them estimate costs for cabinet jobs
+Build a windows application for Ashby's Cabinetry that lets them estimate costs for cabinet jobs
 
 ## Team Members:
 
