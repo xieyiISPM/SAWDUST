@@ -11,7 +11,7 @@ Last Name       | First Name      | GitHub User Name     | Scrum Role
 --------------- | --------------- | -------------------- | ---------------
 Marella         | Praneeth Babu   | pmarella2            | Product Owner
 Wallace         | Robert          | robertwallace3       | TBD
-Xie             | Yi              | xieyirh              | TBD
+Xie             | Yi              | xieyiISPM            | TBD
 Flores          | Gerardo         | gerflo123            | TBD
 TBD             | TBD             | TBD                  | TBD
 
