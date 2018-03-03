@@ -14,6 +14,7 @@ Wallace         | Robert          | robertwallace3       | TBD
 Xie             | Yi              | xieyiISPM            | TBD
 Flores          | Gerardo         | gerflo123            | TBD
 Roberts         | Brody           | brodyrobertsBSU      | TBD
+Brewer          | Adam            | t3chmaSchool         | TBD
 
 ## Team Velocity:
 
