@@ -15,6 +15,7 @@ Xie             | Yi              | xieyiISPM            | TBD
 Flores          | Gerardo         | gerflo123            | TBD
 Roberts         | Brody           | brodyrobertsBSU      | TBD
 Brewer          | Adam            | t3chmaSchool         | TBD
+Rosenthal       | Aaron           | AaronRosenthal-boise | TBD
 
 ## Team Velocity:
 
