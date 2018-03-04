@@ -16,6 +16,7 @@ Flores          | Gerardo         | gerflo123            | TBD
 Roberts         | Brody           | brodyrobertsBSU      | TBD
 Brewer          | Adam            | t3chmaSchool         | TBD
 Rosenthal       | Aaron           | AaronRosenthal-boise | TBD
+Emmanuel        | Massaquoi       | Maxxquoi             | TBD
 
 ## Team Velocity:
 
