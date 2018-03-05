@@ -16,7 +16,7 @@ Flores          | Gerardo         | gerflo123            | Develop
 Roberts         | Brody           | brodyrobertsBSU      | Developer
 Brewer          | Adam            | t3chmaSchool         | Developer
 Rosenthal       | Aaron           | AaronRosenthal-boise | Developer
-Emmanuel        | Massaquoi       | Maxxquoi             | Developer
+Massaquoi       | Emmanuel        | Maxxquoi             | Developer
 
 ## Team Velocity:
 
