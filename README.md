@@ -10,13 +10,13 @@ Build a windows application for Ashby's Cabinetry that lets them estimate costs 
 Last Name       | First Name      | GitHub User Name     | Scrum Role
 --------------- | --------------- | -------------------- | ---------------
 Marella         | Praneeth Babu   | pmarella2            | Product Owner
-Wallace         | Robert          | robertwallace3       | TBD
-Xie             | Yi              | xieyiISPM            | TBD
-Flores          | Gerardo         | gerflo123            | TBD
-Roberts         | Brody           | brodyrobertsBSU      | TBD
-Brewer          | Adam            | t3chmaSchool         | TBD
-Rosenthal       | Aaron           | AaronRosenthal-boise | TBD
-Emmanuel        | Massaquoi       | Maxxquoi             | TBD
+Wallace         | Robert          | robertwallace3       | Scrum Master
+Xie             | Yi              | xieyiISPM            | Developer
+Flores          | Gerardo         | gerflo123            | Developer
+Roberts         | Brody           | brodyrobertsBSU      | Developer
+Brewer          | Adam            | t3chmaSchool         | Developer
+Rosenthal       | Aaron           | AaronRosenthal-boise | Developer
+Emmanuel        | Massaquoi       | Maxxquoi             | Developer
 
 ## Team Velocity:
 
