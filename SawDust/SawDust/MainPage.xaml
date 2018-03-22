@@ -5,10 +5,32 @@
     xmlns:local="using:SawDust"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:view="using:SawDust.Views"
+    xmlns:viewmodel="using:SawDust.ViewModel"
     mc:Ignorable="d">
-
+    <Page.Resources>
+        <view:DetailViewTemplateSelector x:Key="DetailViewTemplateSelector"/>
+        
+        <!-- assosciate your view model to your views here-->
+        <DataTemplate x:Key="ClientTabVM">
+            <view:ClentTab/>
+        </DataTemplate>
+    </Page.Resources>
+    
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Button x:Name="TestButton" Content="Test" HorizontalAlignment="Left" Margin="232,139,0,0" VerticalAlignment="Top" Height="44" Width="134" FontSize="24" Click="testClick"/>
+        <Pivot>
+            <!-- each pivot Item is a view -->
+            <PivotItem Header="Clients">
+                <view:ClentTab />
+            </PivotItem>
+            
+            <PivotItem Header="Jobs">
+                <Grid>
+                    <Button Grid.Row="0" x:Name="TestButton" Content="Test" HorizontalAlignment="Left" Margin="232,139,0,0" VerticalAlignment="Top" Height="44" Width="134" FontSize="24" Click="testClick"/>
+                    <TextBlock>Not done</TextBlock>
+                </Grid>
+            </PivotItem>
+        </Pivot>
 
     </Grid>
 </Page>
