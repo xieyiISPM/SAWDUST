@@ -22,7 +22,7 @@ namespace SawDust.ViewModel
 
         public RelayCommand(Action<object> execute, Predicate<object> canExecute)
         {
-            if (_execute == null)
+            if (execute == null)
                 throw new ArgumentNullException("execute");
             _execute = execute;
             _canExecute = canExecute;

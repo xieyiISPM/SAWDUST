@@ -8,14 +8,6 @@
     xmlns:view="using:SawDust.Views"
     xmlns:viewmodel="using:SawDust.ViewModel"
     mc:Ignorable="d">
-    <Page.Resources>
-        <view:DetailViewTemplateSelector x:Key="DetailViewTemplateSelector"/>
-        
-        <!-- assosciate your view model to your views here-->
-        <DataTemplate x:Key="ClientTabVM">
-            <view:ClentTab/>
-        </DataTemplate>
-    </Page.Resources>
     
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Pivot>

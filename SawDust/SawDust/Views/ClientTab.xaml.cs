@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SawDust.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -22,6 +23,7 @@ namespace SawDust.Views
         public ClentTab()
         {
             this.InitializeComponent();
+            this.DataContext = new ClientTabVM();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
