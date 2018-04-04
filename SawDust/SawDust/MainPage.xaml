@@ -12,6 +12,10 @@
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Pivot>
             <!-- each pivot Item is a view -->
+            <PivotItem Header="Dashboard">
+                <view:Dashboard />
+            </PivotItem>
+            
             <PivotItem Header="Clients">
                 <view:ClentTab />
             </PivotItem>
