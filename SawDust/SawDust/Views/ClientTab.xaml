@@ -24,7 +24,7 @@
                 <Flyout>
                     <StackPanel>
                         <TextBox Width="300" Header="Client Info" PlaceholderText="Type company name here" Text="{Binding Path=NewClientName,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
-                        <TextBox Width="300" PlaceholderText="Typ name here" Text="{Binding Path=NewClientContact,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+                        <TextBox Width="300" PlaceholderText="Type name here" Text="{Binding Path=NewClientContact,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
                         <TextBox Width="300" PlaceholderText="Phone: (123) 456-7890" Text="{Binding Path=NewClientPhone,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" />
                         <TextBox Width="300" PlaceholderText="Email"  Text="{Binding Path=NewClientEmail,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
                         <Button Content="Submit" Command="{Binding Path=AddClientCommand}" x:Name="submitNewClientInfo"/> 

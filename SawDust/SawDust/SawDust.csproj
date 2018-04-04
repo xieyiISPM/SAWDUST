@@ -102,10 +102,15 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModel\ClientTabVM.cs" />
+    <Compile Include="ViewModel\DashboardTabVM.cs" />
+    <Compile Include="ViewModel\MainPageVM.cs" />
     <Compile Include="ViewModel\RelayCommand.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
     <Compile Include="Views\ClientTab.xaml.cs">
       <DependentUpon>ClientTab.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DashboardTab.xaml.cs">
+      <DependentUpon>DashboardTab.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\DetailViewTemplateSelector.cs" />
     <Compile Include="Views\StringFormatConverter.cs" />
@@ -131,6 +136,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Views\DashboardTab.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
