@@ -32,9 +32,7 @@
         <Pivot Visibility="{Binding TabsVisibility, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
             <!-- each pivot Item is a view -->
             <PivotItem Header="Dashboard">
-                <view:DashboardTab />
-            </PivotItem>
-
+//
             <PivotItem Header="Clients">
                 <view:ClentTab />
             </PivotItem>
