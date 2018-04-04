@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SawDust.BusinessObjects
 {
-    class User
+    /*class User
     {
         public string name { get; set; }
         public string username { get; set; }
@@ -19,7 +19,7 @@ namespace SawDust.BusinessObjects
             this.password = password;
         }
 
-    }
+    }*/
 
 
 }
