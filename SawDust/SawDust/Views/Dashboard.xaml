@@ -11,13 +11,24 @@
         <Button Content="Users" HorizontalAlignment="Left" Margin="112,141,0,0" VerticalAlignment="Top" Height="73" Width="176" RenderTransformOrigin="0.597,20.236">
 
         </Button>
-        <Button Content="Add User" HorizontalAlignment="Left" Margin="112,286,0,0" VerticalAlignment="Top" Height="73" Width="176" RenderTransformOrigin="0.597,20.236">
-
-        </Button>
+        
         <Button Content="Delete User" HorizontalAlignment="Left" Margin="112,446,0,0" VerticalAlignment="Top" Height="73" Width="176" RenderTransformOrigin="0.597,20.236">
 
         </Button>
         <GridView HorizontalAlignment="Left" Height="678" Margin="547,184,0,0" VerticalAlignment="Top" Width="604"/>
+
+        <Button Content="Add User" HorizontalAlignment="Left" Margin="112,286,0,0" VerticalAlignment="Top" Height="73" Width="176" RenderTransformOrigin="0.597,20.236">
+            <Button.Flyout>
+                <Flyout>
+                    <StackPanel>
+                        <TextBox Width="300" Header="New User Login Info" PlaceholderText="First Name" Text="{Binding Path=NewUserName,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+                        <TextBox Width="300" PlaceholderText="User ID" Text="{Binding Path=NewUserID,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+                        <TextBox Width="300" PlaceholderText="Password" Text="{Binding Path=NewUserPassword,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" />
+                        <Button Content="Add" Command="{Binding Path=AddUserCommand}" x:Name="submitNewUserInfo"/>
+                    </StackPanel>
+                </Flyout>
+            </Button.Flyout>
+        </Button>
 
 
     </Grid>

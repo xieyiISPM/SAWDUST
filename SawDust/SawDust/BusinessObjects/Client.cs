@@ -14,12 +14,7 @@ namespace SawDust.BusinessObjects
         public string ClientContactEMail { get; set; }
         public string Status { get; set; }
     }
-    class User
-    {
-        public string Name { get; set; }
-        public string ID { get; set; }
-        public string Password { get; set; }
-    }
+
     class Job
     {
         public string Name { get; set; }
