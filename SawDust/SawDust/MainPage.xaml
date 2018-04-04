@@ -10,21 +10,43 @@
     mc:Ignorable="d">
     
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Pivot>
+
+        <StackPanel Visibility="{Binding SignInVisibility, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
+            <TextBlock Text="Sign In" FontSize="24" Margin="20,20,20,20"/>
+            <Rectangle Height="2" Margin="10,0,10,10" Fill="Black"/>
+            <TextBlock Text="Email" FontSize="16" Margin="10,10,10,10"/>
+            <TextBox FontSize="16" Margin="10,0,10,10" Text="{Binding Email, Mode=TwoWay}"/>
+            <TextBlock Text="Password" FontSize="16" Margin="10,10,10,10"/>
+            <PasswordBox FontSize="16" Margin="10,0,10,10" Password="{Binding Password, Mode=TwoWay}"/>
+            <Button Content="Sign In" Margin="10,15,10,10" Command="{Binding Path=SignInCommand}"/>
+            <CheckBox Content="Remember Me" Margin="110,-40,10,10"/>
+            <TextBlock Text="Forgot Your Password?" FontSize="16" Margin="10,0,10,10"/>
+        </StackPanel>
+        <StackPanel Visibility="{Binding BadCredsVisibility, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
+            <TextBlock Text="Invalid Credentials" FontSize="24" Margin="20,20,20,20"/>
+            <Rectangle Height="2" Margin="10,0,10,10" Fill="Black"/>
+            <TextBlock Text="Please try again" FontSize="16" Margin="10,10,10,10"/>
+            <Button Content="Ok" Margin="10,15,10,10" Command="{Binding Path=RetryLoginCommand}"/>
+            <TextBlock Text="Forgot Your Password?" FontSize="16" Margin="10,0,10,10"/>
+        </StackPanel>
+        <Pivot Visibility="{Binding TabsVisibility, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
             <!-- each pivot Item is a view -->
             <PivotItem Header="Dashboard">
-                <view:Dashboard />
-            </PivotItem>
-            
+//
             <PivotItem Header="Clients">
                 <view:ClentTab />
             </PivotItem>
-            
+
             <PivotItem Header="Jobs">
-                <Grid>
-                    <Button Grid.Row="0" x:Name="TestButton" Content="Test" HorizontalAlignment="Left" Margin="232,139,0,0" VerticalAlignment="Top" Height="44" Width="134" FontSize="24" Click="testClick"/>
-                    <TextBlock>Not done</TextBlock>
-                </Grid>
+                
+            </PivotItem>
+
+            <PivotItem Header="Cabinet Setup">
+                
+            </PivotItem>
+
+            <PivotItem Header="Summary/Report">
+                
             </PivotItem>
         </Pivot>
 
