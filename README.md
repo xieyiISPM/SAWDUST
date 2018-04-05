@@ -22,7 +22,7 @@ Xie             | Yi              | xieyiISPM            | Developer
 
 Sprint | Estimated Velocity | Actual Velocity
 ------ | ------------------ | ---------------
-1      | TBD                | TBD
+1      | 30                 | 26 
 2      | TBD                | TBD
 3      | TBD                | TBD
 4      | TBD                | TBD
