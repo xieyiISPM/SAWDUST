@@ -22,7 +22,7 @@ namespace SawDust.BusinessObjects
         public string Password { get; set; }
     }*/
 
-    class Job
+    class QJob
     {
         public string Name { get; set; }
         public string Status { get; set; }
