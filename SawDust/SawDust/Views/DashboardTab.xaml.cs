@@ -26,5 +26,20 @@ namespace SawDust.Views
             this.InitializeComponent();
             this.DataContext = new DashboardTabVM();
         }
+
+        private void NewClientFlyout_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void NewClientFlyout_Click_1(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

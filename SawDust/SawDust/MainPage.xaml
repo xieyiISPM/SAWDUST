@@ -48,7 +48,7 @@
                 
             </PivotItem>
 
-            <PivotItem Header="Summary/Report">
+            <PivotItem Header="Summary/Report" Width="1476" Height="952">
                 
             </PivotItem>
         </Pivot>
