@@ -30,14 +30,14 @@ Sprint | Estimated Velocity | Actual Velocity
 
 ## Sprint 1 - Retrospective
 
-Retrospective Points          | How Well Accomplished (Scale 1-10)
------------------------------ | -------------------------------------
-Scrum planning process        | 5
-Stand up meeting              | 2
-Sprint retrospect             |
-Closing tasks                 |
-Celebration of an app         |
-Happy with the git workflow   |
+Retrospective Points            | How Well Accomplished (Scale 1-10)
+------------------------------- | -------------------------------------
+* Scrum planning process        | 5
+* Stand up meeting              | 2
+* Sprint retrospect             |
+* Closing tasks                 |
+* Celebration of an app         |
+* Happy with the git workflow   |
 
 ### Things we could do better
 
