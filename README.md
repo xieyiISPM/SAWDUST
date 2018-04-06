@@ -28,7 +28,6 @@ Sprint | Estimated Velocity | Actual Velocity
 4      | TBD                | TBD
 
 
-
 ## Sprint 1 - Retrospective
 
 Retrospective Points          |  How Well Accomplished (Scale 1-10)
