@@ -18,15 +18,21 @@ using Windows.UI.Xaml.Navigation;
 
 namespace SawDust.Views
 {
-    public sealed partial class ClentTab : UserControl
+    public sealed partial class DashboardTab : UserControl
     {
-        public ClentTab()
+
+        public DashboardTab()
         {
             this.InitializeComponent();
-            this.DataContext = new ClientTabVM();
+            this.DataContext = new DashboardTabVM();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void NewClientFlyout_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void NewClientFlyout_Click_1(object sender, RoutedEventArgs e)
         {
 
         }
