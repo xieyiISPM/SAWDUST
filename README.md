@@ -26,3 +26,23 @@ Sprint | Estimated Velocity | Actual Velocity
 2      | TBD                | TBD
 3      | TBD                | TBD
 4      | TBD                | TBD
+
+
+## Sprint 1 - Retrospective
+
+Retrospective Points            | How Well Accomplished (Scale 1-10)
+------------------------------- | -------------------------------------
+Scrum planning process          | 5
+Stand up meeting                | 2
+Sprint retrospect               |
+Closing tasks                   |
+Celebration of an app           |
+Happy with the git workflow     |
+
+### Things we could do better
+
+* Team meeting/communication/coordination
+* Stand up meeting - meet 30 min before class Monday/Wednesday
+* Code review
+* Select and work on tasks sooner
+
