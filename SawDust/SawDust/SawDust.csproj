@@ -96,8 +96,10 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="AppGlobals.cs" />
+    <Compile Include="BusinessObjects\Job.cs" />
     <Compile Include="BusinessObjects\User.cs" />
     <Compile Include="BusinessObjects\Client.cs" />
+    <Compile Include="DataAccess\IDataAccess.cs" />
     <Compile Include="DataAccess\SqliteDataAccess.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>

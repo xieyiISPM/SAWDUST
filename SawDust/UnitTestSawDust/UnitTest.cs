@@ -2,6 +2,7 @@
 using System;
 using System.IO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using SawDust.BusinessObjects;
 using SawDust.DataAccess;
 
 namespace UnitTestSawDust
@@ -15,6 +16,20 @@ namespace UnitTestSawDust
             SqliteDataAccess da = new SqliteDataAccess();
             Assert.IsFalse(String.IsNullOrEmpty(da.dbFile));
             Assert.IsTrue(File.Exists(da.dbFile));
+        }
+        [TestMethod]
+        public void TestSqliteDaAddUser()
+        {
+            SqliteDataAccess da = new SqliteDataAccess();
+            Assert.IsFalse(String.IsNullOrEmpty(da.dbFile));
+            Assert.IsTrue(File.Exists(da.dbFile));
+            User user = new User() {
+                ID = "testId"
+                ,Name = "Carpenter Bob"
+                ,Password = "what is it"
+            };
+            bool inserted = da.Add(user);
+            Assert.IsTrue(inserted);
         }
     }
 }

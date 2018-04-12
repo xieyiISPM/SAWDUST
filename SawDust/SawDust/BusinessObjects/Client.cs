@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SawDust.BusinessObjects
 {
-    class Client
+    public class Client
     {
         public string ClientCompanyName { get; set; }
         public string ClientContactName { get; set; }
