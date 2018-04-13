@@ -14,7 +14,7 @@ namespace SawDust
         // Documentation 
         // https://docs.microsoft.com/en-us/windows/uwp/design/app-settings/store-and-retrieve-app-data
         public static ApplicationDataContainer gLocalSettings = ApplicationData.Current.LocalSettings;
-        public static StorageFolder gLocalFolder = ApplicationData.Current.LocalFolder;
+        public static StorageFolder gLocalFolder = Windows.Storage.ApplicationData.Current.LocalFolder;
         public static string gLogFilePath = null;
 
     }
