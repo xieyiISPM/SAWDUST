@@ -34,10 +34,10 @@ Retrospective Points            | How Well Accomplished (Scale 1-10)
 ------------------------------- | -------------------------------------
 Scrum planning process          | 5
 Stand up meeting                | 2
-Sprint retrospect               |
-Closing tasks                   |
-Celebration of an app           |
-Happy with the git workflow     |
+Sprint retrospect               | 3
+Closing tasks                   | 5
+Celebration of an app           | 2
+Happy with the git workflow     | 7
 
 ### Things we could do better
 
