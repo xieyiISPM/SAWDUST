@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27130.2036
+VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SawDust", "SawDust\SawDust.csproj", "{6A64D3D4-DBF8-4FE4-839A-09DB5D1B9766}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestSawDust", "UnitTestSawDust\UnitTestSawDust.csproj", "{350406EA-0EAD-4EF0-BE94-99AD68650022}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,24 @@ Global
 		{6A64D3D4-DBF8-4FE4-839A-09DB5D1B9766}.Release|x86.ActiveCfg = Release|x86
 		{6A64D3D4-DBF8-4FE4-839A-09DB5D1B9766}.Release|x86.Build.0 = Release|x86
 		{6A64D3D4-DBF8-4FE4-839A-09DB5D1B9766}.Release|x86.Deploy.0 = Release|x86
+		{350406EA-0EAD-4EF0-BE94-99AD68650022}.Debug|ARM.ActiveCfg = Debug|ARM
+		{350406EA-0EAD-4EF0-BE94-99AD68650022}.Debug|ARM.Build.0 = Debug|ARM
+		{350406EA-0EAD-4EF0-BE94-99AD68650022}.Debug|ARM.Deploy.0 = Debug|ARM
+		{350406EA-0EAD-4EF0-BE94-99AD68650022}.Debug|x64.ActiveCfg = Debug|x64
+		{350406EA-0EAD-4EF0-BE94-99AD68650022}.Debug|x64.Build.0 = Debug|x64
+		{350406EA-0EAD-4EF0-BE94-99AD68650022}.Debug|x64.Deploy.0 = Debug|x64
+		{350406EA-0EAD-4EF0-BE94-99AD68650022}.Debug|x86.ActiveCfg = Debug|x86
+		{350406EA-0EAD-4EF0-BE94-99AD68650022}.Debug|x86.Build.0 = Debug|x86
+		{350406EA-0EAD-4EF0-BE94-99AD68650022}.Debug|x86.Deploy.0 = Debug|x86
+		{350406EA-0EAD-4EF0-BE94-99AD68650022}.Release|ARM.ActiveCfg = Release|ARM
+		{350406EA-0EAD-4EF0-BE94-99AD68650022}.Release|ARM.Build.0 = Release|ARM
+		{350406EA-0EAD-4EF0-BE94-99AD68650022}.Release|ARM.Deploy.0 = Release|ARM
+		{350406EA-0EAD-4EF0-BE94-99AD68650022}.Release|x64.ActiveCfg = Release|x64
+		{350406EA-0EAD-4EF0-BE94-99AD68650022}.Release|x64.Build.0 = Release|x64
+		{350406EA-0EAD-4EF0-BE94-99AD68650022}.Release|x64.Deploy.0 = Release|x64
+		{350406EA-0EAD-4EF0-BE94-99AD68650022}.Release|x86.ActiveCfg = Release|x86
+		{350406EA-0EAD-4EF0-BE94-99AD68650022}.Release|x86.Build.0 = Release|x86
+		{350406EA-0EAD-4EF0-BE94-99AD68650022}.Release|x86.Deploy.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
