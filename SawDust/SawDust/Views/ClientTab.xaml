@@ -23,7 +23,7 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <StackPanel Orientation="Horizontal" Grid.Row="1">
-            <Button Content="Add Client" HorizontalAlignment="Left" x:Name="NewClientFlyout" Margin="10,10,10,10">
+            <Button Content="Add Client" HorizontalAlignment="Center" x:Name="NewClientFlyout" Margin="425,10,10,10">
                 <Button.Flyout>
                     <Flyout>
                         <StackPanel>
@@ -42,9 +42,14 @@
                     </Flyout>
                 </Button.Flyout>
             </Button>
-            <Button x:Name="removeClientButton" Content="Remove Client" HorizontalAlignment="Left" Margin="10,10,10,10" />
-            </StackPanel>
-        <ListView Grid.Row="2"   ItemsSource="{Binding Path=Clients}" >
+            <Button x:Name="removeClientButton" Content="Remove Client" HorizontalAlignment="Center" Margin="50,10,10,10" />
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="2">
+            <TextBlock Text="Current Client List" FontSize="26" FontStyle="Italic" Margin="450,40,100,-30" HorizontalAlignment="Center"/>
+        </StackPanel>
+
+        <ListView Grid.Row="2"   ItemsSource="{Binding Path=Clients}" Height="825" Width="1491" Margin="5,80,4,-4" >
             <ListView.HeaderTemplate>
                 <DataTemplate>
                     <Grid Padding="12" >
@@ -84,4 +89,5 @@
         </ListView>
     </Grid>
 
+    
 </UserControl>
