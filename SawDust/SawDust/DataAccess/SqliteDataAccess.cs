@@ -62,11 +62,13 @@ namespace SawDust.DataAccess
                 db.Open();
                 try
                 {
-                    SqliteCommand command = new SqliteCommand("INSERT into CLIENTS (CompanyName, ContactName, PhoneNumber, InsertEtime) values (@param1, @param2, @param3, @param4)", db);
-                    command.Parameters.Add(new SqliteParameter("@param1", client.ClientCompanyName));
-                    command.Parameters.Add(new SqliteParameter("@param2", client.ClientContactName));
-                    command.Parameters.Add(new SqliteParameter("@param3", client.ClientContactPhone));
+                    SqliteCommand command = new SqliteCommand("INSERT into CLIENTS (CompanyName, ContactName, PhoneNumber, InsertEtime, Status, Email) values (@param1, @param2, @param3, @param4, @param5, @param6)", db);
+                    command.Parameters.Add(new SqliteParameter("@param1", (null == client.ClientCompanyName) ? "" : client.ClientCompanyName));
+                    command.Parameters.Add(new SqliteParameter("@param2", (null == client.ClientContactName) ? "" : client.ClientContactName));
+                    command.Parameters.Add(new SqliteParameter("@param3", (null == client.ClientContactPhone) ? "" : client.ClientContactPhone));
                     command.Parameters.Add(new SqliteParameter("@param4", DateTimeOffset.Now.ToUnixTimeSeconds()));
+                    command.Parameters.Add(new SqliteParameter("@param5", (null == client.Status) ? "" : client.Status));
+                    command.Parameters.Add(new SqliteParameter("@param6", (null == client.ClientContactEMail) ? "" : client.ClientContactEMail));
                     command.ExecuteNonQuery();
                 }
                 catch (Exception e)
@@ -181,14 +183,21 @@ namespace SawDust.DataAccess
                     {
                         Client client = new Client();
                         clients.Add(client);
+                        var id = dataReader["ClientID"];
+                        var contact = dataReader["ContactName"];
+                        var comp = dataReader["CompanyName"];
+                        var phone = dataReader["PhoneNumber"];
+                        var email = dataReader["Email"];
+                        var status = dataReader["Status"];
+                        var insert = dataReader["InsertEtime"];
 
-                        client.ID = (int)dataReader["ClientID"];
-                        client.ClientContactName = (string)dataReader["ContactName"];
-                        client.ClientCompanyName = (string)dataReader["CompanyName"];
-                        client.ClientContactPhone = (string)dataReader["PhoneNumber"];
-                        client.ClientContactEMail = (string)dataReader["Email"];
-                        client.Status = (string)dataReader["Status"];
-                        client.InsertEtime = (int)dataReader["InsertEtime"];
+                        client.ID = DBNull.Value == id ? -1L : (long)id;
+                        client.ClientContactName = DBNull.Value == contact ? "" : contact as string;
+                        client.ClientCompanyName = DBNull.Value == comp ? "" : comp as string; ;
+                        client.ClientContactPhone = DBNull.Value == phone ? "" : phone as string; ;
+                        client.ClientContactEMail = DBNull.Value == email ? "" : email as string; ;
+                        client.Status = DBNull.Value == status ? "" : status as string; ;
+                        client.InsertEtime = DBNull.Value == insert ? 0L : (long) insert; ;
                     }
                 }
                 catch (Exception e)
@@ -300,7 +309,7 @@ namespace SawDust.DataAccess
                 {
                     // Client table
                     String tableCommand = "CREATE TABLE IF NOT EXISTS CLIENTS (ClientID	INTEGER PRIMARY KEY AUTOINCREMENT,	CompanyName	TEXT, " +
-                    "ContactName	TEXT,	PhoneNumber	TEXT,	Email	TEXT,	Status	TEXT,	InsertEtime	INTEGER ) ";
+                    "ContactName	TEXT,	PhoneNumber	TEXT,	Email	TEXT ,	Status	TEXT,	InsertEtime	INTEGER ) ";
                     SqliteCommand createTable = new SqliteCommand(tableCommand, db);
                     createTable.ExecuteReader();
 
