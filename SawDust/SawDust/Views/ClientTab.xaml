@@ -6,87 +6,82 @@
     xmlns:bo="using:SawDust.BusinessObjects"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d" Height="300.462" Width="461.769">
+    mc:Ignorable="d" >
 
     <UserControl.Resources>
         <local:StringFormatConverter x:Key="StringFormatConverter"/>
 
     </UserControl.Resources>
+
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="300"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="300"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <ListView ItemsSource="{Binding Path=Clients}" Grid.Row="1" Grid.ColumnSpan="2">
-            <!--<ListView.ItemTemplate>
-                <DataTemplate x:DataType="bo:Client">
-                    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Orientation="Horizontal" Grid.Row="1">
+            <Button Content="Add Client" HorizontalAlignment="Left" x:Name="NewClientFlyout" Margin="10,10,10,10">
+                <Button.Flyout>
+                    <Flyout>
+                        <StackPanel>
+                            <TextBox Width="300" Header="Client Info" PlaceholderText="Type company name here" Text="{Binding Path=NewClientName,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+                            <TextBox Width="300" PlaceholderText="Type name here" Text="{Binding Path=NewClientContact,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+                            <TextBox Width="300" PlaceholderText="Phone: (123) 456-7890" Text="{Binding Path=NewClientPhone,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" />
+                            <TextBox Width="300" PlaceholderText="Email"  Text="{Binding Path=NewClientEmail,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+                            <ComboBox Width="300" PlaceholderText="Active" ItemsSource="{Binding Path=Statuses}" 
+                                      SelectedItem="{Binding SelectedStateOption, Mode=TwoWay}" 
+                                      DisplayMemberPath="ComboBoxOption"
+                                      />
+
+
+                            <Button Content="Submit" Command="{Binding Path=AddClientCommand}" x:Name="submitNewClientInfo" IsEnabled="{Binding Path=SubmitNewClientEnabled,Mode=OneWay}"/>
+                        </StackPanel>
+                    </Flyout>
+                </Button.Flyout>
+            </Button>
+            <Button x:Name="removeClientButton" Content="Remove Client" HorizontalAlignment="Left" Margin="10,10,10,10" />
+            </StackPanel>
+        <ListView Grid.Row="2"   ItemsSource="{Binding Path=Clients}" >
+            <ListView.HeaderTemplate>
+                <DataTemplate>
+                    <Grid Padding="12" >
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="47"/>
-                            <ColumnDefinition/>
+                            <ColumnDefinition Width="250"/>
+                            <ColumnDefinition Width="250"/>
+                            <ColumnDefinition Width="250"/>
+                            <ColumnDefinition Width="250"/>
+                            <ColumnDefinition Width="250"/>
                         </Grid.ColumnDefinitions>
+                        <TextBlock Text="Company Name"  Style="{ThemeResource BaseTextBlockStyle}"/>
+                        <TextBlock Grid.Column="1" Text="Contact"  Style="{ThemeResource BaseTextBlockStyle}"/>
+                        <TextBlock Grid.Column="2" Text="Phone Number"  Style="{ThemeResource BaseTextBlockStyle}"/>
+                        <TextBlock Grid.Column="3" Text="Email"  Style="{ThemeResource BaseTextBlockStyle}"/>
+                        <TextBlock Grid.Column="4" Text="Status"  Style="{ThemeResource BaseTextBlockStyle}"/>
+                    </Grid>
+                </DataTemplate>
+            </ListView.HeaderTemplate>
+            <ListView.ItemTemplate>
+                <DataTemplate x:Name="TableDataTemplate" x:DataType="bo:Client">
+                    <Grid Height="48">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="250"/>
+                            <ColumnDefinition Width="250"/>
+                            <ColumnDefinition Width="250"/>
+                            <ColumnDefinition Width="250"/>
+                            <ColumnDefinition Width="250"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" VerticalAlignment="Center" Text="{x:Bind ClientCompanyName}" />
+                        <TextBlock Grid.Column="1" VerticalAlignment="Center" Text="{x:Bind ClientContactName}" />
+                        <TextBlock Grid.Column="2" VerticalAlignment="Center" Text="{x:Bind ClientContactPhone}"/>
+                        <TextBlock Grid.Column="3" VerticalAlignment="Center" Text="{x:Bind ClientContactEMail}"/>
+                        <TextBlock Grid.Column="4" VerticalAlignment="Center" Text="{x:Bind Status}"/>
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>
-            -->
         </ListView>
-        <Button Grid.Row="0" Content="Delete Client" HorizontalAlignment="Left" x:Name="NewClientFlyout_Copy" Margin="-335,180,0,63" Width="185" Height="57" FontSize="26">
-
-        </Button>
-        <Button Grid.Row="0" Content="Add Client" HorizontalAlignment="Left" x:Name="NewClientFlyout" Margin="-335,-27,0,270" Width="185" Height="57" FontSize="26">
-            <Button.Flyout>
-                <Flyout>
-                    <StackPanel>
-                        <TextBox Width="300" Header="Client Info" PlaceholderText="Type company name here" Text="{Binding NewClientName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                        <TextBox Width="300" PlaceholderText="Type name here" Text="{Binding NewClientContact, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                        <TextBox Width="300" PlaceholderText="Phone: (123) 456-7890" Text="{Binding NewClientPhone, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-                        <TextBox Width="300" PlaceholderText="Email"  Text="{Binding NewClientEmail, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                        <Button Content="Submit" Command="{Binding AddClientCommand}" x:Name="submitNewClientInfo"/>
-                    </StackPanel>
-                </Flyout>
-            </Button.Flyout>
-        </Button>
-
-        <ListView HorizontalAlignment="Center" VerticalAlignment="Center">
-            <ListView ItemsSource="{Binding Path=Client}" Grid.Row="0" SelectionChanged="ListView_SelectionChanged" HorizontalAlignment="Right">
-                <ListView.HeaderTemplate>
-                    <DataTemplate>
-                        <Grid Padding="8" >
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="250"/>
-                                <ColumnDefinition Width="150"/>
-                                <ColumnDefinition Width="150"/>
-                                <ColumnDefinition Width="150"/>
-                                <ColumnDefinition Width="150"/>
-
-                            </Grid.ColumnDefinitions>
-                            <TextBlock Grid.Column="0" Text="Company Name" Style="{ThemeResource CaptionTextBlockStyle}" FontSize="22"/>
-                            <TextBlock Grid.Column="1" Text="Contact Name" Style="{ThemeResource CaptionTextBlockStyle}" FontSize="22"/>
-                            <TextBlock Grid.Column="2" Text="Contact Phone" Style="{ThemeResource CaptionTextBlockStyle}" FontSize="22"/>
-                            <TextBlock Grid.Column="3" Text="Contact E-Mail" Style="{ThemeResource CaptionTextBlockStyle}" FontSize="22"/>
-                            <TextBlock Grid.Column="4" Text="Status" Style="{ThemeResource CaptionTextBlockStyle}" FontSize="22"/>
-                        </Grid>
-                    </DataTemplate>
-                </ListView.HeaderTemplate>
-                <ListView.ItemTemplate>
-                    <DataTemplate x:Name="TableDataTemplate3" x:DataType="bo:Client">
-                        <Grid >
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="250"/>
-                                <ColumnDefinition Width="150"/>
-
-                            </Grid.ColumnDefinitions>
-                            <TextBlock Grid.Column="0" VerticalAlignment="Center" Style="{ThemeResource BaseTextBlockStyle}" Text="{x:Bind ClientCompanyName}" />
-                            <TextBlock Grid.Column="1" VerticalAlignment="Center" Style="{ThemeResource BaseTextBlockStyle}" Text="{x:Bind ClientContactName}" />
-                        </Grid>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-        </ListView>
-
     </Grid>
+
 </UserControl>

@@ -10,7 +10,7 @@ namespace SawDust.BusinessObjects
     {
         public long ID = -1;
 
-        public int InsertEtime { get; set; }
+        public long InsertEtime { get; set; }
         public string ClientCompanyName { get; set; }
         public string ClientContactName { get; set; }
         public string ClientContactPhone { get; set; }

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using SawDust.BusinessObjects;
+using SawDust.DataAccess;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -28,6 +30,7 @@ namespace SawDust
         /// </summary>
         public App()
         {
+            PopulateTestingData();
             this.InitializeComponent();
             this.Suspending += OnSuspending;
         }
@@ -95,6 +98,51 @@ namespace SawDust
             var deferral = e.SuspendingOperation.GetDeferral();
             //TODO: Save application state and stop any background activity
             deferral.Complete();
+        }
+
+
+        private void PopulateTestingData()
+        {
+            IDataAccess dao = new SqliteDataAccess();
+            try
+            {
+                List<Client> clients = dao.GetAllClients();
+                if (clients.Count > 0)
+                {
+                    return;
+                }
+                Client clienta = new Client()
+                {
+                    ClientCompanyName = "Construction Company",
+                    ClientContactEMail = "CC@ConstructionCompany.com",
+                    ClientContactPhone = "(208) 555-5555",
+                    ClientContactName = "Bob Roberts",
+                    Status = "Active"                    
+                };
+                dao.Add(clienta);
+                Client clientb = new Client()
+                {
+                    ClientCompanyName = "Montey Company",
+                    ClientContactEMail = "Python@OldBrit.com",
+                    ClientContactPhone = "(208) 555-5555",
+                    ClientContactName = "Jim James",
+                    Status = "Active"
+                };
+                dao.Add(clientb);
+                Client clientc = new Client()
+                {
+                    ClientCompanyName = "Wrecking Crew",
+                    ClientContactEMail = "Ax.man@OldMusic.com",
+                    ClientContactPhone = "(208) 555-5555",
+                    ClientContactName = "Hank Henries",
+                    Status = "Inactive"
+                };
+                dao.Add(clientc);
+            } catch(Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
         }
     }
 }
