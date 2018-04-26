@@ -109,6 +109,7 @@
     <Compile Include="ViewModel\DashboardTabVM.cs" />
     <Compile Include="ViewModel\MainPageVM.cs" />
     <Compile Include="ViewModel\RelayCommand.cs" />
+    <Compile Include="ViewModel\UserTabVM.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
     <Compile Include="Views\Dashboard.xaml.cs">
       <DependentUpon>Dashboard.xaml</DependentUpon>
@@ -126,6 +127,7 @@
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
+    <None Include="ClassDiagram1.cd" />
     <None Include="SawDust_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
