@@ -40,5 +40,10 @@ namespace SawDust.Views
         {
 
         }
+
+        private void ListView_SelectionChanged_2(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }
