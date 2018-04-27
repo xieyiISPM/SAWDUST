@@ -27,19 +27,19 @@ namespace SawDust.Views
             this.DataContext = new DashboardTabVM();
         }
 
-        private void NewClientFlyout_Click(object sender, RoutedEventArgs e)
+        private void submitNewUserInfo_Click(object sender, RoutedEventArgs e)
         {
-
+            addUserFlyout.Flyout.Hide();
         }
 
-        private void NewClientFlyout_Click_1(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-
+            NewUserFlyout.Flyout.Hide();
         }
 
-        private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-
+            NewUserFlyout.Flyout.Hide();
         }
     }
 }
