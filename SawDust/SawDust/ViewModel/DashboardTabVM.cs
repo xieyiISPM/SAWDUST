@@ -1,4 +1,5 @@
 ﻿using SawDust.BusinessObjects;
+using SawDust.DataAccess;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -13,15 +14,12 @@ namespace SawDust.ViewModel
      */
     class DashboardTabVM : ViewModelBase
     {
+        private IDataAccess _dao;
         #region Constructors
         public DashboardTabVM() {
             Name = "Dashboard";
-            _users.Add(new User());
-
-            _users.Add(new User());
-            _users.First().Name = "Ad Min";
-            _users.First().Password = "password";
-            _users.First().ID = "admin@gmail.com";
+            _dao = new SqliteDataAccess();
+            RefreshUsers();
         }
         #endregion
 
@@ -31,6 +29,7 @@ namespace SawDust.ViewModel
         public ObservableCollection<User> Users
         {
             get { return _users; }
+            set { _users = value; OnPropertyChanged("Users"); }
         }
         private User _newUser;
         public User NewUser
@@ -81,15 +80,48 @@ namespace SawDust.ViewModel
             // validate stuff TBD
 
             // save to database TBD
+            _dao.Add(NewUser);
             // add client to list
             _users.Add(NewUser);
             OnPropertyChanged("Users");
 
             // reset the view
-            NewUser = new User();            
+            NewUser = new User();
             OnPropertyChanged("NewUserName");
             OnPropertyChanged("NewUserID");
             OnPropertyChanged("NewUserPassword");
+            ////RefreshUsers();
+        }
+
+        RelayCommand _removeUserCommand;
+        public ICommand RemoveUserCommand
+        {
+            get
+            {
+                if (_removeUserCommand == null)
+                {
+                    _removeUserCommand = new RelayCommand(param => this.RemoveUser(param));
+                }
+                return _removeUserCommand;
+            }
+
+        }
+        public void RemoveUser(object param)
+        {
+            // validate stuff TBD
+            User rUser = _users.Where(u => param.Equals(u.ID)).First();
+
+            // save to database TBD
+            _dao.Delete(rUser);
+            // remove from list
+            _users.Remove(rUser);
+            OnPropertyChanged("Users");
+            RefreshUsers();
+        }
+
+        private void RefreshUsers()
+        {
+            Users = new ObservableCollection<User>(_dao.getAllUsers());
         }
     }
 }

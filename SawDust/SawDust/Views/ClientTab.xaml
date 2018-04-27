@@ -34,7 +34,7 @@
                             <ComboBox Width="300" PlaceholderText="Active" ItemsSource="{Binding Path=Statuses}" 
                                       SelectedItem="{Binding SelectedStateOption, Mode=TwoWay}" 
                                       DisplayMemberPath="ComboBoxOption"
-                                      />
+                            />
 
 
                             <Button Content="Submit" Command="{Binding Path=AddClientCommand}" x:Name="submitNewClientInfo" IsEnabled="{Binding Path=SubmitNewClientEnabled,Mode=OneWay}"/>
