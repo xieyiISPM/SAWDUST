@@ -109,12 +109,10 @@
     <Compile Include="ViewModel\DashboardTabVM.cs" />
     <Compile Include="ViewModel\MainPageVM.cs" />
     <Compile Include="ViewModel\RelayCommand.cs" />
-    
     <Compile Include="ViewModel\SubviewModel\Jobs\CabinetsVM.cs" />
     <Compile Include="ViewModel\SubviewModel\Jobs\JobDetailsVM.cs" />
     <Compile Include="ViewModel\SubviewModel\Jobs\JobListVM.cs" />
     <Compile Include="ViewModel\SubviewModel\Jobs\RoomsVM.cs" />
-    
     <Compile Include="ViewModel\UserTabVM.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
     <Compile Include="Views\Dashboard.xaml.cs">
