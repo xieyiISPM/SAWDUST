@@ -115,6 +115,9 @@
     <Compile Include="ViewModel\SubviewModel\Jobs\RoomsVM.cs" />
     <Compile Include="ViewModel\UserTabVM.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
+    <Compile Include="Views\JobsTab.xaml.cs">
+      <DependentUpon>JobsTab.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Dashboard.xaml.cs">
       <DependentUpon>Dashboard.xaml</DependentUpon>
     </Compile>
@@ -126,6 +129,18 @@
     </Compile>
     <Compile Include="Views\DetailViewTemplateSelector.cs" />
     <Compile Include="Views\StringFormatConverter.cs" />
+    <Compile Include="Views\Subviews\JobsTab\JobList.xaml.cs">
+      <DependentUpon>JobList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Subviews\JobsTab\Cabinets.xaml.cs">
+      <DependentUpon>Cabinets.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Subviews\JobsTab\Rooms.xaml.cs">
+      <DependentUpon>Rooms.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Subviews\JobsTab\JobDetails.xaml.cs">
+      <DependentUpon>JobDetails.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -149,6 +164,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Views\JobsTab.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\DashboardTab.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -162,6 +181,22 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ClientTab.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Subviews\JobsTab\JobList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Subviews\JobsTab\Cabinets.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Subviews\JobsTab\Rooms.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Subviews\JobsTab\JobDetails.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
