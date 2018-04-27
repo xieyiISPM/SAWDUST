@@ -106,7 +106,19 @@
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
-                        <Button Grid.Row="1" VerticalAlignment="Center" Content="Add User" Background="Green" Foreground="LightGray"/>
+                        <Button Grid.Row="1" VerticalAlignment="Center" Content="Add User" Background="Green" Foreground="LightGray">
+                            <Button.Flyout>
+                                <Flyout>
+                                    <StackPanel>
+                                        <TextBox Width="300" Header="User Name" PlaceholderText="Create your user name" Text="{Binding Path=NewUserName,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+                                        <TextBox Width="300" PlaceholderText="Type User ID" Text="{Binding Path=NewUserID,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+                                        <TextBox Width="300" PlaceholderText="Password" Text="{Binding Path=NewUserPassword,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" />
+                                        
+                                        <Button Content="Submit" Command="{Binding Path=AddUserCommand}" x:Name="submitNewUserInfo" IsEnabled="{Binding Path=SubmitNewUserEnabled,Mode=OneWay}"/>
+                                    </StackPanel>
+                                </Flyout>
+                            </Button.Flyout>
+                        </Button>
                     </ListView>
                 </Flyout>
             </Button.Flyout>

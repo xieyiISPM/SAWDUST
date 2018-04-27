@@ -1,6 +1,4 @@
-﻿using SawDust.BusinessObjects;
-using SawDust.DataAccess;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -17,7 +15,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-namespace SawDust
+namespace UnitTestSawDust
 {
     /// <summary>
     /// Provides application-specific behavior to supplement the default Application class.
@@ -30,7 +28,6 @@ namespace SawDust
         /// </summary>
         public App()
         {
-            PopulateTestingData();
             this.InitializeComponent();
             this.Suspending += OnSuspending;
         }
@@ -42,6 +39,14 @@ namespace SawDust
         /// <param name="e">Details about the launch request and process.</param>
         protected override void OnLaunched(LaunchActivatedEventArgs e)
         {
+
+#if DEBUG
+            if (System.Diagnostics.Debugger.IsAttached)
+            {
+                this.DebugSettings.EnableFrameRateCounter = true;
+            }
+#endif
+
             Frame rootFrame = Window.Current.Content as Frame;
 
             // Do not repeat app initialization when the Window already has content,
@@ -61,19 +66,13 @@ namespace SawDust
                 // Place the frame in the current Window
                 Window.Current.Content = rootFrame;
             }
+            
+            Microsoft.VisualStudio.TestPlatform.TestExecutor.UnitTestClient.CreateDefaultUI();
 
-            if (e.PrelaunchActivated == false)
-            {
-                if (rootFrame.Content == null)
-                {
-                    // When the navigation stack isn't restored navigate to the first page,
-                    // configuring the new page by passing required information as a navigation
-                    // parameter
-                    rootFrame.Navigate(typeof(MainPage), e.Arguments);
-                }
-                // Ensure the current window is active
-                Window.Current.Activate();
-            }
+            // Ensure the current window is active
+            Window.Current.Activate();
+
+            Microsoft.VisualStudio.TestPlatform.TestExecutor.UnitTestClient.Run(e.Arguments);
         }
 
         /// <summary>
@@ -98,51 +97,6 @@ namespace SawDust
             var deferral = e.SuspendingOperation.GetDeferral();
             //TODO: Save application state and stop any background activity
             deferral.Complete();
-        }
-
-
-        private void PopulateTestingData()
-        {
-            IDataAccess dao = new SqliteDataAccess();
-            try
-            {
-                List<Client> clients = dao.GetAllClients();
-                if (clients.Count > 0)
-                {
-                    return;
-                }
-                Client clienta = new Client()
-                {
-                    ClientCompanyName = "Construction Company",
-                    ClientContactEMail = "CC@ConstructionCompany.com",
-                    ClientContactPhone = "(208) 555-5555",
-                    ClientContactName = "Bob Roberts",
-                    Status = "Active"                    
-                };
-                dao.Add(clienta);
-                Client clientb = new Client()
-                {
-                    ClientCompanyName = "Montey Company",
-                    ClientContactEMail = "Python@OldBrit.com",
-                    ClientContactPhone = "(208) 555-5555",
-                    ClientContactName = "Jim James",
-                    Status = "Active"
-                };
-                dao.Add(clientb);
-                Client clientc = new Client()
-                {
-                    ClientCompanyName = "Wrecking Crew",
-                    ClientContactEMail = "Ax.man@OldMusic.com",
-                    ClientContactPhone = "(208) 555-5555",
-                    ClientContactName = "Hank Henries",
-                    Status = "Inactive"
-                };
-                dao.Add(clientc);
-            } catch(Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
-
         }
     }
 }

@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 
 namespace SawDust.BusinessObjects
 {
-    class Client
+    public class Client
     {
+        public long ID = -1;
+
+        public long InsertEtime { get; set; }
         public string ClientCompanyName { get; set; }
         public string ClientContactName { get; set; }
         public string ClientContactPhone { get; set; }
