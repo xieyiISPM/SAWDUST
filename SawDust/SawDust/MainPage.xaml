@@ -41,7 +41,7 @@
             </PivotItem>
 
             <PivotItem Header="Jobs">
-                
+                <view:JobsTab />
             </PivotItem>
 
             <PivotItem Header="Cabinet Setup">
