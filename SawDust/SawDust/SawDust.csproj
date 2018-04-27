@@ -113,6 +113,7 @@
     <Compile Include="ViewModel\SubviewModel\Jobs\JobDetailsVM.cs" />
     <Compile Include="ViewModel\SubviewModel\Jobs\JobListVM.cs" />
     <Compile Include="ViewModel\SubviewModel\Jobs\RoomsVM.cs" />
+    <Compile Include="ViewModel\UserTabVM.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
     <Compile Include="Views\JobsTab.xaml.cs">
       <DependentUpon>JobsTab.xaml</DependentUpon>
