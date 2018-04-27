@@ -321,7 +321,7 @@ namespace SawDust.DataAccess
 
                     // TODO: finish this once we know what columns need to be added
                     // Jobs table
-                    tableCommand = "CREATE TABLE IF NOT EXISTS USERS (JobId	INTEGER PRIMARY KEY AUTOINCREMENT,	ClientID	INTEGER, " +
+                    tableCommand = "CREATE TABLE IF NOT EXISTS JOBS (JobId	INTEGER PRIMARY KEY AUTOINCREMENT,	ClientID	INTEGER, " +
                     "Password	TEXT, UserType TEXT,	InsertEtime	INTEGER ) ";
                     createTable = new SqliteCommand(tableCommand, db);
 
