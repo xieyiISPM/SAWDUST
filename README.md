@@ -23,7 +23,7 @@ Xie             | Yi              | xieyiISPM            | Developer
 Sprint | Estimated Velocity | Actual Velocity
 ------ | ------------------ | ---------------
 1      | 30                 | 26 
-2      | TBD                | TBD
+2      | 33                 | 21
 3      | TBD                | TBD
 4      | TBD                | TBD
 
@@ -34,10 +34,10 @@ Retrospective Points            | How Well Accomplished (Scale 1-10)
 ------------------------------- | -------------------------------------
 Scrum planning process          | 5
 Stand up meeting                | 2
-Sprint retrospect               |
-Closing tasks                   |
-Celebration of an app           |
-Happy with the git workflow     |
+Sprint retrospect               | 3
+Closing tasks                   | 5
+Celebration of an app           | 2
+Happy with the git workflow     | 7
 
 ### Things we could do better
 

@@ -1,0 +1,18 @@
+﻿<Page
+    x:Class="SawDust.Views.Subviews.JobsTab.JobList"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:SawDust.Views.Subviews.JobsTab"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <ListView HorizontalAlignment="Left" Height="372" Margin="482,254,0,0" VerticalAlignment="Top" Width="502"/>
+        <Button Content="Add Job" HorizontalAlignment="Left" Height="68" Margin="136,304,0,0" VerticalAlignment="Top" Width="150"/>
+        <Button Content="Deleted Jobs" HorizontalAlignment="Left" Height="68" Margin="136,408,0,0" VerticalAlignment="Top" Width="150"/>
+        <StackPanel Orientation="Horizontal" Grid.Row="2">
+            <TextBlock Text="Current Jobs List" FontSize="26" FontStyle="Italic" Margin="638,0,-164.8,0" HorizontalAlignment="Center" Height="602" Width="262" RenderTransformOrigin="0.502,0.502"/>
+        </StackPanel>
+    </Grid>
+</Page>
