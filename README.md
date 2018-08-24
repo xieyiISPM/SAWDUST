@@ -46,3 +46,5 @@ Happy with the git workflow     | 7
 * Code review
 * Select and work on tasks sooner
 
+Sponsor Josh: 208-590-2114
+email: 2joshashby@gmail.com
