@@ -14,6 +14,7 @@ namespace SawDust.BusinessObjects
         public string JobDescription { get; set; }
         public double SalesTax { get; set; }
         public double DefaultHeight { get; set; }
+        public double MarkupPct { get; set; }
 
         public long InsertEtime { get; set; }
         
