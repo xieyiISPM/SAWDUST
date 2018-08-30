@@ -319,10 +319,10 @@ namespace SawDust.DataAccess
                     createTable = new SqliteCommand(tableCommand, db);
                     createTable.ExecuteReader();
 
-                    // TODO: finish this once we know what columns need to be added
                     // Jobs table
-                    tableCommand = "CREATE TABLE IF NOT EXISTS JOBS (JobId	INTEGER PRIMARY KEY AUTOINCREMENT,	ClientID	INTEGER, " +
-                    "Password	TEXT, UserType TEXT,	InsertEtime	INTEGER ) ";
+                    tableCommand = "CREATE TABLE IF NOT EXISTS CREATE TABLE JOBS (	JobId	INTEGER PRIMARY KEY AUTOINCREMENT, 	ClientID	INTEGER, JobName	TEXT" +
+                        ",	JobDescription	TEXT,	SalesTax	REAL NOT NULL DEFAULT 6,	DefaultHeight	REAL,	InsertEtime	INTEGER,	MarkupPct	REAL NOT NULL DEFAULT 30)";
+
                     createTable = new SqliteCommand(tableCommand, db);
 
                     tableCommand = "CREATE TABLE IF NOT EXISTS VERSION (Version	REAL)";
