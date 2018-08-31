@@ -28,8 +28,8 @@ namespace SawDust.DataAccess
         Boolean Add(Job job);
         Boolean Update(Job job);
         Boolean Delete(Job job);
-        List<User> GetAllJobs();
-        List<User> GetAllJobsByClient(Client client);
+        List<Job> GetAllJobs();
+        List<Job> GetAllJobsByClient(Client client);
 
     }
 }

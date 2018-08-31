@@ -127,7 +127,7 @@ namespace SawDust.DataAccess
                 {
 
                     SqliteCommand command = new SqliteCommand("INSERT into JOBS (ClientID, JobName, JobDescription, SalesTax, DefaultHeight, InsertEtime, MarkupPct ) values (@param1, @param2, @param3, @param4, @param5, @param6, @param7)", db);
-                    command.Parameters.Add(new SqliteParameter("@param1", (null == job.ClientId) ? "" : job.ClientId));
+                    command.Parameters.Add(new SqliteParameter("@param1", job.ClientId));
                     command.Parameters.Add(new SqliteParameter("@param2", (null == job.JobName) ? "" : job.JobName));
                     command.Parameters.Add(new SqliteParameter("@param3", (null == job.JobDescription) ? "" : job.JobDescription));
                     command.Parameters.Add(new SqliteParameter("@param4", job.SalesTax));
@@ -230,8 +230,8 @@ namespace SawDust.DataAccess
 
                 try
                 {
-                    SqliteCommand command = new SqliteCommand("select * from JOBS where ClientID = @Param", db);
-                    command.Parameters.Add(new SqliteParameter("@param1", client.ID));
+                    SqliteCommand command = new SqliteCommand("select * from JOBS where ClientID = @param", db);
+                    command.Parameters.Add(new SqliteParameter("@param", client.ID));
                     IDataReader dataReader = command.ExecuteReader();
                     while (dataReader.Read())
                     {
@@ -481,10 +481,11 @@ namespace SawDust.DataAccess
                     createTable.ExecuteReader();
 
                     // Jobs table
-                    tableCommand = "CREATE TABLE IF NOT EXISTS CREATE TABLE JOBS (	JobID	INTEGER PRIMARY KEY AUTOINCREMENT, 	ClientID	INTEGER, JobName	TEXT" +
+                    tableCommand = "CREATE TABLE IF NOT EXISTS JOBS (	JobID	INTEGER PRIMARY KEY AUTOINCREMENT, 	ClientID	INTEGER, JobName	TEXT" +
                         ",	JobDescription	TEXT,	SalesTax	REAL NOT NULL DEFAULT 6,	DefaultHeight	REAL,	InsertEtime	INTEGER,	MarkupPct	REAL NOT NULL DEFAULT 30)";
 
                     createTable = new SqliteCommand(tableCommand, db);
+                    createTable.ExecuteReader();
 
                     tableCommand = "CREATE TABLE IF NOT EXISTS VERSION (Version	REAL)";
                     createTable.ExecuteReader();
@@ -494,7 +495,8 @@ namespace SawDust.DataAccess
                 }
                 catch (SqliteException e)
                 {
-                    //Do nothing
+                    //TODO: logging
+                    Console.WriteLine(e.Message);
                 }
                 finally
                 {

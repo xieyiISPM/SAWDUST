@@ -28,6 +28,5 @@ namespace SawDust.BusinessObjects
 	`InsertEtime`	INTEGER,
 	`MarkupPct`	REAL NOT NULL DEFAULT 30
     */
-);
     }
 }
