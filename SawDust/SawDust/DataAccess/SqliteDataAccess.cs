@@ -114,10 +114,187 @@ namespace SawDust.DataAccess
             user.InsertEtime = (long)dataReader["InsertEtime"];
             return user;
         }
+
+
+        #region jobs
         public bool Add(Job job)
         {
-            throw new NotImplementedException();
+            bool retVal = true;
+            using (SqliteConnection db = new SqliteConnection("Filename=" + dbFile))
+            {
+                db.Open();
+                try
+                {
+
+                    SqliteCommand command = new SqliteCommand("INSERT into JOBS (ClientID, JobName, JobDescription, SalesTax, DefaultHeight, InsertEtime, MarkupPct ) values (@param1, @param2, @param3, @param4, @param5, @param6, @param7)", db);
+                    command.Parameters.Add(new SqliteParameter("@param1", (null == job.ClientId) ? "" : job.ClientId));
+                    command.Parameters.Add(new SqliteParameter("@param2", (null == job.JobName) ? "" : job.JobName));
+                    command.Parameters.Add(new SqliteParameter("@param3", (null == job.JobDescription) ? "" : job.JobDescription));
+                    command.Parameters.Add(new SqliteParameter("@param4", job.SalesTax));
+                    command.Parameters.Add(new SqliteParameter("@param5", job.DefaultHeight));
+                    command.Parameters.Add(new SqliteParameter("@param6", DateTimeOffset.Now.ToUnixTimeSeconds()));
+                    command.Parameters.Add(new SqliteParameter("@param7", job.MarkupPct));
+                    command.ExecuteNonQuery();
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                    retVal = false;
+                }
+            }
+            return retVal;
         }
+
+        public bool Delete(Job job)
+        {
+            bool retVal = true;
+            using (SqliteConnection db = new SqliteConnection("Filename=" + dbFile))
+            {
+                db.Open();
+
+                try
+                {
+                    SqliteCommand command = new SqliteCommand("DELETE from JOBS where JobID = @param1", db);
+                    command.Parameters.Add(new SqliteParameter("@param1", job.ID));
+                    command.ExecuteNonQuery();
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                    retVal = false;
+                }
+            }
+            return retVal;
+        }
+        public List<Job> GetAllJobs()
+        {
+            List<Job> jobs = new List<Job>();
+            using (SqliteConnection db = new SqliteConnection("Filename=" + dbFile))
+            {
+                db.Open();
+
+                try
+                {
+                    SqliteCommand command = new SqliteCommand("select * from JOBS", db);
+                    IDataReader dataReader = command.ExecuteReader();
+                    while (dataReader.Read())
+                    {
+                        /*
+                         *  tableCommand = "CREATE TABLE IF NOT EXISTS CREATE TABLE JOBS 
+                         *  (	JobID	INTEGER PRIMARY KEY AUTOINCREMENT, 	
+                         *  ClientID	INTEGER, 
+                         *  JobName	TEXT" +
+                        ",	JobDescription	TEXT,	
+                            SalesTax	REAL NOT NULL DEFAULT 6,	
+                            DefaultHeight	REAL,	
+                            InsertEtime	INTEGER,	
+                            MarkupPct	REAL NOT NULL DEFAULT 30)";
+
+                         */
+                        Job job = new Job();
+                        jobs.Add(job);
+                        var id = dataReader["JobID"];
+                        var clientID = dataReader["ClientID"];
+                        var jobName = dataReader["JobName"];
+                        var jobDesc = dataReader["JobDescription"];
+                        var salesTax = dataReader["SalesTax"];
+                        var defaultHeight = dataReader["DefaultHeight"];
+                        var insertEtime = dataReader["InsertEtime"];
+                        var markupPct = dataReader["MarkupPct"];
+
+                        job.ID = DBNull.Value == id ? -1L : (long)id;
+                        job.ClientId = DBNull.Value == clientID ? -1L : (long)clientID;
+                        job.JobName = DBNull.Value == jobName ? "" : jobName as string; 
+                        job.JobDescription = DBNull.Value == jobDesc ? "" : jobDesc as string; 
+                        job.SalesTax = DBNull.Value == salesTax ? 0.0 : (double)salesTax; 
+                        job.DefaultHeight = DBNull.Value == defaultHeight ? 0.0 : (double)defaultHeight; 
+                        job.InsertEtime = DBNull.Value == insertEtime ? 0L : (long)insertEtime; 
+                        job.MarkupPct = DBNull.Value == markupPct ? 0.0 : (double)markupPct; 
+
+                    }
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                }
+                return jobs;
+            }
+        }
+
+        public List<Job> GetAllJobsByClient(Client client)
+        {
+            List<Job> jobs = new List<Job>();
+            using (SqliteConnection db = new SqliteConnection("Filename=" + dbFile))
+            {
+                db.Open();
+
+                try
+                {
+                    SqliteCommand command = new SqliteCommand("select * from JOBS where ClientID = @Param", db);
+                    command.Parameters.Add(new SqliteParameter("@param1", client.ID));
+                    IDataReader dataReader = command.ExecuteReader();
+                    while (dataReader.Read())
+                    {
+                       
+                        Job job = new Job();
+                        jobs.Add(job);
+                        var id = dataReader["JobID"];
+                        var clientID = dataReader["ClientID"];
+                        var jobName = dataReader["JobName"];
+                        var jobDesc = dataReader["JobDescription"];
+                        var salesTax = dataReader["SalesTax"];
+                        var defaultHeight = dataReader["DefaultHeight"];
+                        var insertEtime = dataReader["InsertEtime"];
+                        var markupPct = dataReader["MarkupPct"];
+
+                        job.ID = DBNull.Value == id ? -1L : (long)id;
+                        job.ClientId = DBNull.Value == clientID ? -1L : (long)clientID;
+                        job.JobName = DBNull.Value == jobName ? "" : jobName as string;
+                        job.JobDescription = DBNull.Value == jobDesc ? "" : jobDesc as string;
+                        job.SalesTax = DBNull.Value == salesTax ? 0.0 : (double)salesTax;
+                        job.DefaultHeight = DBNull.Value == defaultHeight ? 0.0 : (double)defaultHeight;
+                        job.InsertEtime = DBNull.Value == insertEtime ? 0L : (long)insertEtime;
+                        job.MarkupPct = DBNull.Value == markupPct ? 0.0 : (double)markupPct;
+
+                    }
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                }
+                return jobs;
+            }
+        }
+        public bool Update(Job job)
+        {
+            bool retVal = true;
+            using (SqliteConnection db = new SqliteConnection("Filename=" + dbFile))
+            {
+                db.Open();
+
+                try
+                {
+                    SqliteCommand command = new SqliteCommand("UPDATE JOBS set JobName = @param1, JobDescription = @param2 " +
+                        ", ClientID = @param4, SalesTax = @param5, DefaultHeight = @param6, MarkupPct = @param7 where JobID = @param3", db);
+                    command.Parameters.Add(new SqliteParameter("@param1", job?.JobName));
+                    command.Parameters.Add(new SqliteParameter("@param2", job?.JobDescription));
+                    command.Parameters.Add(new SqliteParameter("@param3", job?.ID));
+                    command.Parameters.Add(new SqliteParameter("@param4", job?.ClientId));
+                    command.Parameters.Add(new SqliteParameter("@param5", job?.SalesTax));
+                    command.Parameters.Add(new SqliteParameter("@param6", job?.DefaultHeight));
+                    command.Parameters.Add(new SqliteParameter("@param7", job?.MarkupPct));
+                    command.ExecuteNonQuery();
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                    retVal = false;
+                }
+            }
+            return retVal;
+        }
+
+        #endregion
 
         public bool Delete(User user)
         {
@@ -163,11 +340,7 @@ namespace SawDust.DataAccess
             return retVal;
         }
 
-        public bool Delete(Job job)
-        {
-            throw new NotImplementedException();
-        }
-
+        
         public List<Client> GetAllClients()
         {
             List<Client> clients = new List<Client>();
@@ -208,16 +381,7 @@ namespace SawDust.DataAccess
             }
         }
 
-        public List<User> GetAllJobs()
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<User> GetAllJobsByClient(Client client)
-        {
-            throw new NotImplementedException();
-        }
-
+        
         public List<User> getAllUsers()
         {
             List<User> users = new List<User>();
@@ -293,10 +457,7 @@ namespace SawDust.DataAccess
             return retVal;
         }
 
-        public bool Update(Job job)
-        {
-            throw new NotImplementedException();
-        }
+        
 
         private void CreateDbFile()
         {
@@ -320,7 +481,7 @@ namespace SawDust.DataAccess
                     createTable.ExecuteReader();
 
                     // Jobs table
-                    tableCommand = "CREATE TABLE IF NOT EXISTS CREATE TABLE JOBS (	JobId	INTEGER PRIMARY KEY AUTOINCREMENT, 	ClientID	INTEGER, JobName	TEXT" +
+                    tableCommand = "CREATE TABLE IF NOT EXISTS CREATE TABLE JOBS (	JobID	INTEGER PRIMARY KEY AUTOINCREMENT, 	ClientID	INTEGER, JobName	TEXT" +
                         ",	JobDescription	TEXT,	SalesTax	REAL NOT NULL DEFAULT 6,	DefaultHeight	REAL,	InsertEtime	INTEGER,	MarkupPct	REAL NOT NULL DEFAULT 30)";
 
                     createTable = new SqliteCommand(tableCommand, db);

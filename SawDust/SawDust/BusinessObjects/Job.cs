@@ -9,7 +9,7 @@ namespace SawDust.BusinessObjects
     public class Job
     {
         public long ID = -1;
-        public string ClientId { get; set; }
+        public long ClientId { get; set; }
         public string JobName { get; set; }
         public string JobDescription { get; set; }
         public double SalesTax { get; set; }
