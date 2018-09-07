@@ -20,13 +20,14 @@
             <RowDefinition Height="300"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Button Grid.Row="0" Content="Manage Users" HorizontalAlignment="Center" VerticalAlignment="Top" x:Name="NewUserFlyout" Margin="50,50,50,50" FontSize="20" Height="40" Width="180" Grid.RowSpan="1">
+        <Button Grid.Row="0" Content="Manage Users" HorizontalAlignment="Left" VerticalAlignment="Top" x:Name="NewUserFlyout" Margin="10,10,10,10" FontSize="14" Height="35" Width="120" Grid.RowSpan="1">
             <Button.Flyout>
                 <Flyout>
                     <Flyout.FlyoutPresenterStyle>
                         <Style TargetType="FlyoutPresenter">
                             <Setter Property="MinWidth" Value="800"/>
                             <Setter Property="Padding" Value="10,10,10,10"/>
+                            <Setter Property="Margin" Value="10, 10, 10, 10"/>
                         </Style>
                     </Flyout.FlyoutPresenterStyle>
                     <ListView>
@@ -36,13 +37,13 @@
                                     <Grid Padding="12" >
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="220"/>
-                                            <ColumnDefinition Width="240"/>
-                                            <ColumnDefinition Width="190"/>
-                                            <ColumnDefinition Width="80"/>
+                                            <ColumnDefinition Width="600"/>
+                                  <!--          <ColumnDefinition Width="100"/> -->
+                                  <!--          <ColumnDefinition Width="80"/>-->
                                         </Grid.ColumnDefinitions>
                                         <TextBlock Grid.Column="0" Text="Name"/>
                                         <TextBlock Grid.Column="1" Text="ID"/>
-                                        <TextBlock Grid.Column="2" Text="Password"/>
+                                    <!--   <TextBlock Grid.Column="2" Text="Password"/>--> 
                                     </Grid>
                                 </DataTemplate>
                             </ListView.HeaderTemplate>
@@ -86,6 +87,12 @@
                         <Button x:Name="addUserFlyout" Grid.Row="1" VerticalAlignment="Center" Content="Add User" Background="Green" Foreground="LightGray">
                             <Button.Flyout>
                                 <Flyout>
+                                    <Flyout.FlyoutPresenterStyle>
+                                        <Style TargetType="FlyoutPresenter">
+                                            <Setter Property="Padding" Value="10,10,10,10"/>
+                                            <Setter Property="Margin" Value="10, 30, 10, 10"/>
+                                        </Style>
+                                    </Flyout.FlyoutPresenterStyle>
                                     <StackPanel>
                                         <TextBox Width="300" Header="User Name" PlaceholderText="Create your user name" Text="{Binding Path=NewUserName,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
                                         <TextBox Width="300" PlaceholderText="Type User ID" Text="{Binding Path=NewUserID,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
@@ -100,7 +107,7 @@
             </Button.Flyout>
         </Button>
 
-        <ListView HorizontalAlignment="Center" VerticalAlignment="Center">
+        <ListView HorizontalAlignment="Center" Margin="10, 10, 10, 10" VerticalAlignment="Center">
             <ListView ItemsSource="{Binding Path=QJob}" Grid.Row="0" HorizontalAlignment="Right">
                 <ListView.HeaderTemplate>
                     <DataTemplate>
