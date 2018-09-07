@@ -21,10 +21,10 @@
             <RowDefinition Height="300"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
+       <!-- <Grid.ColumnDefinitions>
             <ColumnDefinition MinWidth="200"/>
             <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
+        </Grid.ColumnDefinitions>-->
         <Button Grid.Row="0" Grid.Column="0" Content="Manage Users" HorizontalAlignment="Left" VerticalAlignment="Top" x:Name="NewUserFlyout" Margin="10,10,10,10" FontSize="14" Height="35" Width="120" Grid.RowSpan="1">
             <Button.Flyout>
                 <Flyout>
@@ -111,9 +111,9 @@
              </Flyout>
             </Button.Flyout>
         </Button>
-<!--
+
         <ListView HorizontalAlignment="Center" Margin="10, 10, 10, 10" VerticalAlignment="Center">
-            <ListView ItemsSource="{Binding Path=QJob}" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right">
+            <ListView ItemsSource="{Binding Path=QJob}" Grid.Row="0"  HorizontalAlignment="Right">
                 <ListView.HeaderTemplate>
                     <DataTemplate>
                         <Grid Padding="12" >
@@ -142,6 +142,6 @@
                 </ListView.ItemTemplate>
             </ListView>
         </ListView>
--->
+
     </Grid>
 </UserControl>
