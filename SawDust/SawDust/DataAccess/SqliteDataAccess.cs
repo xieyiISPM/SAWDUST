@@ -126,7 +126,7 @@ namespace SawDust.DataAccess
                 try
                 {
 
-                    SqliteCommand command = new SqliteCommand("INSERT into JOBS (ClientID, JobName, JobDescription, SalesTax, DefaultHeight, InsertEtime, MarkupPct ) values (@param1, @param2, @param3, @param4, @param5, @param6, @param7)", db);
+                    SqliteCommand command = new SqliteCommand("INSERT into JOBS (ClientID, JobName, JobDescription, SalesTax, DefaultHeight, InsertEtime, MarkupPct, ClientName ) values (@param1, @param2, @param3, @param4, @param5, @param6, @param7, @param8)", db);
                     command.Parameters.Add(new SqliteParameter("@param1", job.ClientId));
                     command.Parameters.Add(new SqliteParameter("@param2", (null == job.JobName) ? "" : job.JobName));
                     command.Parameters.Add(new SqliteParameter("@param3", (null == job.JobDescription) ? "" : job.JobDescription));
@@ -134,6 +134,7 @@ namespace SawDust.DataAccess
                     command.Parameters.Add(new SqliteParameter("@param5", job.DefaultHeight));
                     command.Parameters.Add(new SqliteParameter("@param6", DateTimeOffset.Now.ToUnixTimeSeconds()));
                     command.Parameters.Add(new SqliteParameter("@param7", job.MarkupPct));
+                    command.Parameters.Add(new SqliteParameter("@param8", job.ClientName));
                     command.ExecuteNonQuery();
                 }
                 catch (Exception e)
@@ -201,6 +202,7 @@ namespace SawDust.DataAccess
                         var defaultHeight = dataReader["DefaultHeight"];
                         var insertEtime = dataReader["InsertEtime"];
                         var markupPct = dataReader["MarkupPct"];
+                        var clientName = dataReader["ClientName"];
 
                         job.ID = DBNull.Value == id ? -1L : (long)id;
                         job.ClientId = DBNull.Value == clientID ? -1L : (long)clientID;
@@ -209,7 +211,8 @@ namespace SawDust.DataAccess
                         job.SalesTax = DBNull.Value == salesTax ? 0.0 : (double)salesTax; 
                         job.DefaultHeight = DBNull.Value == defaultHeight ? 0.0 : (double)defaultHeight; 
                         job.InsertEtime = DBNull.Value == insertEtime ? 0L : (long)insertEtime; 
-                        job.MarkupPct = DBNull.Value == markupPct ? 0.0 : (double)markupPct; 
+                        job.MarkupPct = DBNull.Value == markupPct ? 0.0 : (double)markupPct;
+                        job.ClientName = DBNull.Value == clientName ? null : clientName as string;
 
                     }
                 }
@@ -481,7 +484,7 @@ namespace SawDust.DataAccess
                     createTable.ExecuteReader();
 
                     // Jobs table
-                    tableCommand = "CREATE TABLE IF NOT EXISTS JOBS (	JobID	INTEGER PRIMARY KEY AUTOINCREMENT, 	ClientID	INTEGER, JobName	TEXT" +
+                    tableCommand = "CREATE TABLE IF NOT EXISTS JOBS (	JobID	INTEGER PRIMARY KEY AUTOINCREMENT, 	ClientID	INTEGER, ClientName TEXT, JobName	TEXT" +
                         ",	JobDescription	TEXT,	SalesTax	REAL NOT NULL DEFAULT 6,	DefaultHeight	REAL,	InsertEtime	INTEGER,	MarkupPct	REAL NOT NULL DEFAULT 30)";
 
                     createTable = new SqliteCommand(tableCommand, db);

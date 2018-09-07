@@ -1,4 +1,6 @@
-﻿using SawDust.ViewModel.SubviewModel.Jobs;
+﻿using SawDust.BusinessObjects;
+using SawDust.ViewModel;
+using SawDust.ViewModel.SubviewModel.Jobs;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -26,7 +28,20 @@ namespace SawDust.Views.Subviews.JobsTab
         public JobList()
         {
             this.InitializeComponent();
-            this.DataContext = new JobListVM();
+            this.DataContext = new JobsTabVM();
+        }
+
+        private void delteJob_Click(object sender, RoutedEventArgs e)
+        {
+            Button o = (Button)sender;
+            Job j = (Job)o.DataContext;
+            ((JobsTabVM)this.DataContext).RemoveJob(j);
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            // this.Del
+            
         }
     }
 }

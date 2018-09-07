@@ -27,7 +27,7 @@ namespace SawDust.Views
         public JobsTab()
         {
             this.InitializeComponent();
-            //this.DataContext = new JobsTabVM();
+            this.DataContext = new JobsTabVM();
         }
     }
 }
