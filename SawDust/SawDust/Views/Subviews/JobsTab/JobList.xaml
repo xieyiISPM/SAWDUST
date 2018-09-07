@@ -40,7 +40,7 @@
                             <TextBlock Grid.Column="1" VerticalAlignment="Center" Text="{x:Bind Path=JobName}" />
                             <TextBlock Grid.Column="2" VerticalAlignment="Center" Text="{x:Bind Path=JobDescription}" />
                             <Button Grid.Column="3" VerticalAlignment="Center" Content="Delete" Background="Red" Foreground="LightGray" >
-                                <Button.Flyout x:Name="DeleteUserFlyout">
+                                <Button.Flyout>
                                     <Flyout>
                                         <Grid >
                                             <Grid.RowDefinitions>
