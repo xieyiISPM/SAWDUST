@@ -33,7 +33,8 @@
             <!-- each pivot Item is a view -->
             
             <PivotItem Header="Dashboard">
-                <view:DashboardTab />
+              <!-- <view:DashboardTab />--> 
+                <view:Dashboard />
             </PivotItem>
 
             <PivotItem Header="Clients">
