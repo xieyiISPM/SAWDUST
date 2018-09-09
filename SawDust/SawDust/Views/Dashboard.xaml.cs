@@ -21,6 +21,8 @@ namespace SawDust.Views
    
     public sealed partial class Dashboard : UserControl
     {
+        
+
         public Dashboard()
         {
             this.InitializeComponent();
@@ -37,13 +39,14 @@ namespace SawDust.Views
             addUserFlyout.Flyout.Hide();
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void cancelConfirm_Click(object sender, RoutedEventArgs e)
         {
-            //NewUserFlyout.Flyout.Hide();
+            
         }
-        private void Button_Click(object sender, RoutedEventArgs e)
+
+        private void userCancelConfirm_Click(object sender, RoutedEventArgs e)
         {
-            //NewUserFlyout.Flyout.Hide();
+
         }
     }
 }
