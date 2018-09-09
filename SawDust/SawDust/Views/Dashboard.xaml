@@ -63,7 +63,7 @@
                                             <RowDefinition Height="*"/>
                                             <RowDefinition Height="*"/>
                                         </Grid.RowDefinitions>
-                                        <TextBlock Text="Set up new user" Grid.Row="0" FontSize="20" Margin="0,0,0,30"/>
+                                        <TextBlock Text="Setup new user" Grid.Row="0" FontSize="20" Margin="0,0,0,30"/>
 
                                         <TextBlock Text="User Name" Grid.Row="1" />
                                         <TextBox Width="300" Grid.Row="2" Margin="0,0,0,20" Text="{Binding Path=NewUserName,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
@@ -72,8 +72,11 @@
                                         <TextBlock Text="Password"  Grid.Row="5"/>
                                         <TextBox Width="300" Grid.Row="6" Margin="0,0,0,40" Text="{Binding Path=NewUserPassword,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" />
                                     </Grid>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Button Click="submitNewUserInfo_Click" Content="Submit" Command="{Binding Path=AddUserCommand}" x:Name="submitNewUserInfo" IsEnabled="{Binding Path=SubmitNewUserEnabled,Mode=OneWay}"/>
+                                        <Button Click="userCancel_Click" Content="Cancel" Margin="150,0,10,0"/>
+                                    </StackPanel>
 
-                                    <Button Click="submitNewUserInfo_Click" Content="Submit" Command="{Binding Path=AddUserCommand}" x:Name="submitNewUserInfo" IsEnabled="{Binding Path=SubmitNewUserEnabled,Mode=OneWay}"/>
                        
                                 </StackPanel>
                             </Flyout>
@@ -124,7 +127,6 @@
                                                     </Grid.ColumnDefinitions>
                                                 <Button HorizontalAlignment="Center" Grid.Column="0" Click="Button_Click_1" Background="Red" Foreground="LightGray" Content="Yes" Command="{Binding Path=RemoveUserCommand}" CommandParameter="{Binding Path=ID}" x:Name="delteUserInfo" IsEnabled="True"/>
                                                 <Button HorizontalAlignment="Center" Grid.Column="1" x:Name="notSure" Click="Button_Click" Background="Green" Foreground="LightGray" Content="No"/>
-                                         
                                                 </Grid>
                                             </Grid>
                                         </Flyout>
