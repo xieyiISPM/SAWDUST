@@ -32,12 +32,16 @@ namespace SawDust.Views
             addUserFlyout.Flyout.Hide();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void userCancel_Click(object sender, RoutedEventArgs e)
         {
-            // NewUserFlyout.Flyout.Hide();
+            addUserFlyout.Flyout.Hide();
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            //NewUserFlyout.Flyout.Hide();
+        }
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
             //NewUserFlyout.Flyout.Hide();
         }
