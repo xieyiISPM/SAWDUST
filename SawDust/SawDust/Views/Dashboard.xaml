@@ -15,7 +15,7 @@
     </UserControl.Resources>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="420"/>
+            <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Border BorderThickness="0,0,2,0" BorderBrush="Gray">
@@ -68,7 +68,8 @@
                         <DataTemplate>
                             <Grid Padding="12" >
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="180"/>
+                                    <ColumnDefinition MinWidth="180"/>
+                                    <ColumnDefinition MinWidth="100"/>
                                     <ColumnDefinition Width="100"/>
                                 </Grid.ColumnDefinitions>
                                 <TextBlock Grid.Column="0" Text="Name"/>
@@ -80,9 +81,9 @@
                         <DataTemplate x:Name="TableDataTemplate1" x:DataType="bo:User">
                             <Grid >
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="180"/>
-                                    <ColumnDefinition Width="100"/>
-                                    <ColumnDefinition Width="80"/> 
+                                    <ColumnDefinition MinWidth="180"/>
+                                    <ColumnDefinition MinWidth="100"/>
+                                    <ColumnDefinition Width="100"/> 
                                 </Grid.ColumnDefinitions>
                                 <TextBlock Grid.Column="0" VerticalAlignment="Center" Text="{x:Bind Path=Name}" />
                                 <TextBlock Grid.Column="1" VerticalAlignment="Center" Text="{x:Bind Path=ID}" />
