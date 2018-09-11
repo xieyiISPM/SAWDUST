@@ -65,5 +65,15 @@ namespace SawDust.Views.Subviews.JobsTab
             // single click selects item
             // double click should open the next view in the flow
         }
+
+        private void addNewJob_Click(object sender, RoutedEventArgs e)
+        {
+            addJobButton.Flyout.Hide();
+        }
+
+        private void cancelAddJob_Click(object sender, RoutedEventArgs e)
+        {
+            addJobButton.Flyout.Hide();
+        }
     }
 }

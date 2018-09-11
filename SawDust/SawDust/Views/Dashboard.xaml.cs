@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SawDust.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -17,14 +18,35 @@ using Windows.UI.Xaml.Navigation;
 
 namespace SawDust.Views
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
-    public sealed partial class Dashboard : Page
+   
+    public sealed partial class Dashboard : UserControl
     {
+        
+
         public Dashboard()
         {
             this.InitializeComponent();
+            this.DataContext = new DashboardVM();
+        }
+
+        private void submitNewUserInfo_Click(object sender, RoutedEventArgs e)
+        {
+            addUserFlyout.Flyout.Hide();
+        }
+
+        private void userCancel_Click(object sender, RoutedEventArgs e)
+        {
+            addUserFlyout.Flyout.Hide();
+        }
+
+        private void cancelConfirm_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void userCancelConfirm_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
