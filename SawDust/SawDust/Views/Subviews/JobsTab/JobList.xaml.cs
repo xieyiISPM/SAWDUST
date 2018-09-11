@@ -1,4 +1,6 @@
-﻿using SawDust.ViewModel.SubviewModel.Jobs;
+﻿using SawDust.BusinessObjects;
+using SawDust.ViewModel;
+using SawDust.ViewModel.SubviewModel.Jobs;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -26,7 +28,42 @@ namespace SawDust.Views.Subviews.JobsTab
         public JobList()
         {
             this.InitializeComponent();
-            this.DataContext = new JobListVM();
+            this.DataContext = new JobsTabVM();
+        }
+
+        private void delteJob_Click(object sender, RoutedEventArgs e)
+        {
+            Button o = (Button)sender;
+            Job j = (Job)o.DataContext;
+            ((JobsTabVM)this.DataContext).RemoveJob(j);
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                Button b = sender as Button;
+                Grid g = b.Parent as Grid;
+                Grid g2 = g.Parent as Grid;
+                FlyoutPresenter fp = g2.Parent as FlyoutPresenter;
+                Popup f = fp.Parent as Popup;
+                f.IsOpen = false;
+            }
+            catch { }
+        }
+
+        private void ListView_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            Job j = (Job) e.ClickedItem;
+            ((JobsTabVM)this.DataContext).SelectedJob = j;
+        }
+
+        private void ListView_DoubleTapped(object sender, DoubleTappedRoutedEventArgs e)
+        {
+            object o = sender;
+            // place holder for double click behavior. 
+            // single click selects item
+            // double click should open the next view in the flow
         }
     }
 }

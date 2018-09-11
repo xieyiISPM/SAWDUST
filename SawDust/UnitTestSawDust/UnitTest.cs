@@ -1,5 +1,6 @@
 ﻿
 using System;
+using System.Collections.Generic;
 using System.IO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SawDust.BusinessObjects;
@@ -88,5 +89,88 @@ namespace UnitTestSawDust
             user = da.getUserById(user.ID);
             Assert.AreEqual("now I remember", user.Password);
         }
+        #region jobs
+
+        [TestMethod]
+        public void TestAddJob()
+        {
+            SqliteDataAccess da = new SqliteDataAccess();
+            Assert.IsFalse(String.IsNullOrEmpty(da.dbFile));
+            Assert.IsTrue(File.Exists(da.dbFile));
+            clearAllJobs();
+            Job job = new Job()
+            {                
+                JobName = "job1",
+                JobDescription = "the first job"
+            };
+            bool inserted = da.Add(job);
+            Assert.IsTrue(inserted);
+        }
+
+        [TestMethod]
+        public void TestGetAllJobs()
+        {
+            SqliteDataAccess da = new SqliteDataAccess();
+            Assert.IsNotNull(da);
+            clearAllJobs();
+            TestAddJob();
+            List<Job> jobs = da.GetAllJobs();
+            Assert.IsTrue(jobs.Count > 0);
+            Console.WriteLine("total jobs: " + jobs.Count);
+        }
+
+        [TestMethod]
+        public void TestGetAllJobsByClientID()
+        {
+            SqliteDataAccess da = new SqliteDataAccess();
+            Assert.IsNotNull(da);
+            clearAllJobs();
+            TestAddJob();
+
+            List<Job> jobs = da.GetAllJobsByClient(new Client { ID = 1L });
+            Assert.IsTrue(jobs.Count == 0);
+            Job job = new Job { ClientId = 1L, JobName = "client1job", JobDescription = "client1's job" };
+            da.Add(job);
+            jobs = da.GetAllJobsByClient(new Client { ID = 1L });
+            Assert.IsTrue(jobs.Count == 1);
+        }
+
+        [TestMethod]
+        public void TestUpdateJob()
+        {
+            SqliteDataAccess da = new SqliteDataAccess();
+            Assert.IsNotNull(da);
+
+            clearAllJobs();
+            TestAddJob();
+            List<Job> jobs = da.GetAllJobs();
+
+
+            Assert.IsTrue(jobs.Count == 1);
+            jobs[0].JobName = "updated";
+            jobs[0].JobDescription = "updated";
+            jobs[0].MarkupPct = 90210;
+            jobs[0].SalesTax = 90210.0;
+            da.Update(jobs[0]);
+
+            jobs = da.GetAllJobs();
+            Assert.IsTrue(jobs.Count == 1);
+            Assert.IsTrue(jobs[0].JobName == "updated");
+            Assert.IsTrue(jobs[0].JobDescription == "updated");
+            Assert.IsTrue(jobs[0].MarkupPct == 90210);
+            Assert.IsTrue(jobs[0].SalesTax == 90210.0);
+        }
+
+        private void clearAllJobs()
+        {
+            SqliteDataAccess da = new SqliteDataAccess();
+            Assert.IsNotNull(da);
+
+            List<Job> jobs = da.GetAllJobs();
+            Assert.IsNotNull(jobs);
+            foreach (Job job in jobs) { da.Delete(job); }
+
+        }
+        #endregion
     }
 }

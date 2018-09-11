@@ -4,15 +4,84 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:SawDust.Views.Subviews.JobsTab"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:bo="using:SawDust.BusinessObjects"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <ListView HorizontalAlignment="Left" Height="372" Margin="482,254,0,0" VerticalAlignment="Top" Width="502"/>
-        <Button Content="Add Job" HorizontalAlignment="Left" Height="68" Margin="136,304,0,0" VerticalAlignment="Top" Width="150"/>
-        <Button Content="Deleted Jobs" HorizontalAlignment="Left" Height="68" Margin="136,408,0,0" VerticalAlignment="Top" Width="150"/>
-        <StackPanel Orientation="Horizontal" Grid.Row="2">
-            <TextBlock Text="Current Jobs List" FontSize="26" FontStyle="Italic" Margin="638,0,-164.8,0" HorizontalAlignment="Center" Height="602" Width="262" RenderTransformOrigin="0.502,0.502"/>
-        </StackPanel>
+
+        <ListView x:Name="jobsListView">
+            <ListView x:Name="jobsListViewDetail" ItemsSource="{Binding Jobs}" Grid.Row="0"  ItemClick="ListView_ItemClick" DoubleTapped="ListView_DoubleTapped" IsItemClickEnabled ="True">
+                <ListView.HeaderTemplate>
+                    <DataTemplate>
+                        <Grid Padding="12" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="220"/>
+                                <ColumnDefinition Width="240"/>
+                                <ColumnDefinition Width="190"/>
+                                <ColumnDefinition Width="80"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Text="ClientName"/>
+                            <TextBlock Grid.Column="1" Text="JobName"/>
+                            <TextBlock Grid.Column="2" Text="JobDescription"/>
+                        </Grid>
+                    </DataTemplate>
+                </ListView.HeaderTemplate>
+                <ListView.ItemTemplate>
+                    <DataTemplate x:Name="TableDataTemplate1" x:DataType="bo:Job">
+                        <Grid >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="220"/>
+                                <ColumnDefinition Width="240"/>
+                                <ColumnDefinition Width="190"/>
+                                <ColumnDefinition Width="80"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" VerticalAlignment="Center" Text="{x:Bind Path=ClientName}" />
+                            <TextBlock Grid.Column="1" VerticalAlignment="Center" Text="{x:Bind Path=JobName}" />
+                            <TextBlock Grid.Column="2" VerticalAlignment="Center" Text="{x:Bind Path=JobDescription}" />
+                            <Button x:Name="deleteJobButton"  Grid.Column="3" VerticalAlignment="Center" Content="Delete" Background="Red" Foreground="LightGray" >
+                                <Button.Flyout>
+                                    <Flyout x:Name="deleteFlyout">
+                                        <Grid >
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                            </Grid.RowDefinitions>
+                                            <TextBlock Grid.Row="0" HorizontalAlignment="Center" Width="300" Text="Are you sure?"/>
+                                            <Grid Grid.Row="1">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="1*"/>
+                                                    <ColumnDefinition Width="1*"/>
+                                                </Grid.ColumnDefinitions>
+                                                <Button HorizontalAlignment="Center" Grid.Column="0"  Background="Red" Foreground="LightGray" Content="Yes" x:Name="delteJob" IsEnabled="True" Click="delteJob_Click"/>
+                                                <Button HorizontalAlignment="Center" Grid.Column="1" x:Name="notSure" Click="Button_Click" Background="Green" Foreground="LightGray" Content="No"/>
+                                            </Grid>
+                                        </Grid>
+                                    </Flyout>
+                                </Button.Flyout>
+                            </Button>
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Button x:Name="addJobButton" Grid.Row="1" VerticalAlignment="Center" Content="Add Job" Background="Green" Foreground="LightGray">
+                <Button.Flyout>
+                    <Flyout>
+                        <StackPanel>
+                            <TextBox Width="300" Header="Enter Job Details" PlaceholderText="Name" Text="{Binding Path=NewJobName,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+                            <ComboBox Width="300" PlaceholderText="Client" ItemsSource="{Binding Path=Clients}" 
+                                      SelectedItem="{Binding SelectedClient, Mode=TwoWay}" 
+                                      DisplayMemberPath="ClientCompanyName"
+                            />
+                            <TextBox Width="300" PlaceholderText="Job Description" Text="{Binding Path=NewJobDescription,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+                            <TextBox Width="300" PlaceholderText="Sales Tax" Text="{Binding Path=NewSalesTax,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" />
+                            <TextBox Width="300" PlaceholderText="Markup%" Text="{Binding Path=NewMarkupPct,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" />
+                            <TextBox Width="300" PlaceholderText="Default Height" Text="{Binding Path=NewDefaultHeight,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" />
+                            <Button  Content="Submit" Command="{Binding Path=AddJobCommand}" x:Name="submitNewJob" IsEnabled="{Binding Path=SubmitEnabled,Mode=OneWay}"/>
+                        </StackPanel>
+                    </Flyout>
+                </Button.Flyout>
+            </Button>
+        </ListView>
     </Grid>
 </Page>
