@@ -141,7 +141,7 @@
             <Border BorderThickness="0,0,0,1" BorderBrush="Gray" Margin="10,0,20,10">
             </Border>
             <ListView>
-                <ListView ItemsSource="{Binding Jobs}" SelectedItem="{Binding SelectedUser}">
+                <ListView ItemsSource="{Binding Jobs}" ItemClick="ListView_ItemClick" DoubleTapped="ListView_DoubleTapped" IsItemClickEnabled ="True">
                     <ListView.HeaderTemplate>
                         <DataTemplate>
                             <Grid Padding="12" >
