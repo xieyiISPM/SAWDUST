@@ -114,6 +114,7 @@
 
         <ListView HorizontalAlignment="Center" Margin="10, 10, 10, 10" VerticalAlignment="Center">
             <ListView ItemsSource="{Binding Path=QJob}" Grid.Row="0"  HorizontalAlignment="Right">
+
                 <ListView.HeaderTemplate>
                     <DataTemplate>
                         <Grid Padding="12" >

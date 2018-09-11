@@ -40,8 +40,30 @@ namespace SawDust.Views.Subviews.JobsTab
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            // this.Del
-            
+            try
+            {
+                Button b = sender as Button;
+                Grid g = b.Parent as Grid;
+                Grid g2 = g.Parent as Grid;
+                FlyoutPresenter fp = g2.Parent as FlyoutPresenter;
+                Popup f = fp.Parent as Popup;
+                f.IsOpen = false;
+            }
+            catch { }
+        }
+
+        private void ListView_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            Job j = (Job) e.ClickedItem;
+            ((JobsTabVM)this.DataContext).SelectedJob = j;
+        }
+
+        private void ListView_DoubleTapped(object sender, DoubleTappedRoutedEventArgs e)
+        {
+            object o = sender;
+            // place holder for double click behavior. 
+            // single click selects item
+            // double click should open the next view in the flow
         }
 
         private void addNewJob_Click(object sender, RoutedEventArgs e)

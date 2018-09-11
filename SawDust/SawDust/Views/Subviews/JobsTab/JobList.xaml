@@ -211,8 +211,8 @@
 
     <!--<Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-        <ListView>
-            <ListView ItemsSource="{Binding Jobs}" Grid.Row="0" SelectedItem="{Binding SelectedUser}">
+        <ListView x:Name="jobsListView">
+            <ListView x:Name="jobsListViewDetail" ItemsSource="{Binding Jobs}" Grid.Row="0"  ItemClick="ListView_ItemClick" DoubleTapped="ListView_DoubleTapped" IsItemClickEnabled ="True">
                 <ListView.HeaderTemplate>
                     <DataTemplate>
                         <Grid Padding="12" >
@@ -240,9 +240,9 @@
                             <TextBlock Grid.Column="0" VerticalAlignment="Center" Text="{x:Bind Path=ClientName}" />
                             <TextBlock Grid.Column="1" VerticalAlignment="Center" Text="{x:Bind Path=JobName}" />
                             <TextBlock Grid.Column="2" VerticalAlignment="Center" Text="{x:Bind Path=JobDescription}" />
-                            <Button Grid.Column="3" VerticalAlignment="Center" Content="Delete" Background="Red" Foreground="LightGray" >
+                            <Button x:Name="deleteJobButton"  Grid.Column="3" VerticalAlignment="Center" Content="Delete" Background="Red" Foreground="LightGray" >
                                 <Button.Flyout>
-                                    <Flyout>
+                                    <Flyout x:Name="deleteFlyout">
                                         <Grid >
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="1*"/>
