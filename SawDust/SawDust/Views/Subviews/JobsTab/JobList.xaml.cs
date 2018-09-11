@@ -40,8 +40,15 @@ namespace SawDust.Views.Subviews.JobsTab
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            // this.Del
-            
+            try
+            {
+                Button b = sender as Button;
+                Grid g = b.Parent as Grid;
+                Button b2 = g.Parent as Button;
+                b2.Flyout.Hide();
+
+            }
+            catch { }
         }
 
         private void ListView_ItemClick(object sender, ItemClickEventArgs e)
