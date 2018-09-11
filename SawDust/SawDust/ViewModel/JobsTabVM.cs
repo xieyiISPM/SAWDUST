@@ -41,6 +41,16 @@ namespace SawDust.ViewModel
                 OnPropertyChanged("Clients");
             }
         }
+
+        private Client _selectedMainClient;
+        public Client SelectedMainClient
+        {
+            get { return _selectedMainClient; }
+            set {
+                _selectedMainClient = value;
+                OnPropertyChanged("SelectedMainClient");
+            }
+        }
         private ObservableCollection<Job> _jobs = new ObservableCollection<Job>();
         public ObservableCollection<Job> Jobs
         {

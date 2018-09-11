@@ -43,8 +43,8 @@ namespace SawDust.Views.Subviews.JobsTab
             try
             {
                 Button b = sender as Button;
-                Grid g = b.Parent as Grid;
-                Grid g2 = g.Parent as Grid;
+                StackPanel g = b.Parent as StackPanel;
+                StackPanel g2 = g.Parent as StackPanel;
                 FlyoutPresenter fp = g2.Parent as FlyoutPresenter;
                 Popup f = fp.Parent as Popup;
                 f.IsOpen = false;
@@ -57,6 +57,13 @@ namespace SawDust.Views.Subviews.JobsTab
             Job j = (Job) e.ClickedItem;
             ((JobsTabVM)this.DataContext).SelectedJob = j;
         }
+
+        private void Client_item_clickeds(object sender, ItemClickEventArgs e)
+        {
+            Client c = (Client)e.ClickedItem;
+            ((JobsTabVM)this.DataContext).SelectedMainClient = c;
+        }
+        
 
         private void ListView_DoubleTapped(object sender, DoubleTappedRoutedEventArgs e)
         {

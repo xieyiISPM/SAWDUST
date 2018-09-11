@@ -20,7 +20,7 @@
                     
                 </Border>
 
-                <ListView Grid.Column="0"   ItemsSource="{Binding Path=Clients}"  >
+                <ListView Grid.Column="0"   ItemsSource="{Binding Path=Clients}"  IsItemClickEnabled="True" ItemClick="Client_item_clickeds">
                     <ListView.HeaderTemplate>
                         <DataTemplate>
                             <Grid Padding="12" >
