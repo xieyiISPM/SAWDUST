@@ -43,5 +43,15 @@ namespace SawDust.Views.Subviews.JobsTab
             // this.Del
             
         }
+
+        private void addNewJob_Click(object sender, RoutedEventArgs e)
+        {
+            addJobButton.Flyout.Hide();
+        }
+
+        private void cancelAddJob_Click(object sender, RoutedEventArgs e)
+        {
+            addJobButton.Flyout.Hide();
+        }
     }
 }

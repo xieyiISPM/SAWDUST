@@ -9,6 +9,207 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Border BorderThickness="0,0,2,0" BorderBrush="Gray">
+            <StackPanel Grid.Column="0">
+                <TextBlock Text="Clients" FontSize="24" FontWeight="Bold" Margin="20,20,0,20"/>
+                <Border BorderThickness="0,0,0,1" BorderBrush="Gray" Margin="10,0,20,0">
+                    
+                </Border>
+
+                <ListView Grid.Column="0"   ItemsSource="{Binding Path=Clients}"  >
+                    <ListView.HeaderTemplate>
+                        <DataTemplate>
+                            <Grid Padding="12" >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition MinWidth="400"/>
+                                </Grid.ColumnDefinitions>
+                                
+                                <Border BorderThickness="0,0,0,1" BorderBrush="Gray" Margin="10,0,280,10">
+                                    <TextBlock Grid.Column="0" Text="Company Name"  FontStyle="Italic" FontWeight="Medium"  Margin="0, 0, 0, 10" />
+                                </Border>
+                            </Grid>
+                        </DataTemplate>
+                    </ListView.HeaderTemplate>
+                    <ListView.ItemTemplate>
+                        <DataTemplate x:Name="TableDataTemplate" x:DataType="bo:Client">
+                            <Grid Height="48">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="250"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" VerticalAlignment="Center" Text="{x:Bind ClientCompanyName}" />
+                            </Grid>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackPanel>
+        </Border>
+
+
+        <StackPanel Grid.Column="1">
+            <TextBlock Text=" Job List" FontSize="24" Margin="20,20,0,20" FontWeight="Bold"/>
+            <Border BorderThickness="0,0,0,1" BorderBrush="Gray" Margin="10,0,20,10">
+            </Border>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="300"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0">
+                    <TextBlock  Text="Client Information" FontSize="16"  Margin="10, 0, 0, 0" FontStyle="Italic" FontWeight="Medium" />
+                    <Button x:Name="addJobButton"  VerticalAlignment="Center" Content="Add Job"  FontSize="14" Height="30" Width="100" Margin="10, 60, 0, 0">
+                        <Button.Flyout>
+                            <Flyout>
+                                <Flyout.FlyoutPresenterStyle>
+                                    <Style TargetType="FlyoutPresenter">
+                                        <Setter Property="Padding" Value="10,10,10,10"/>
+                                        <Setter Property="Margin" Value="10, 30, 10, 10"/>
+                                    </Style>
+                                </Flyout.FlyoutPresenterStyle>
+                                <StackPanel>
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="*"/>
+                                        </Grid.RowDefinitions>
+                                        <TextBlock Text="Add new job" Grid.Row="0" FontSize="20" Margin="0,0,0,30"/>
+
+                                        <TextBlock Text="Job Name" Grid.Row="1" />
+                                        <TextBox Width="300" Grid.Row="2" Margin="0,0,0,20" Text="{Binding Path=NewJobName,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+                                        <TextBlock Text="Client" Grid.Row="3" />
+                                        <ComboBox Width="300"  PlaceholderText="Client" ItemsSource="{Binding Path=Clients}" SelectedItem="{Binding SelectedClient, Mode=TwoWay}" 
+                                                  Grid.Row="4" Margin="10,0,0,20" DisplayMemberPath="ClientCompanyName"/>
+                                        <TextBlock Text="Job Description"  Grid.Row="5"/>
+                                        <TextBox Width="300" Grid.Row="6" Margin="0,0,0,20" Text="{Binding Path=NewJobDescription,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+                                        <TextBlock Text="Sales Tax %"  Grid.Row="7"/>
+                                        <TextBox Width="300" Grid.Row="8" Margin="0,0,0,20" Text="{Binding Path=NewSalesTax,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" />
+                                        <TextBlock Text="Markup %"  Grid.Row="9"/>
+                                        <TextBox Width="300" Grid.Row="10" Margin="0,0,0,20" Text="{Binding Path=NewMarkupPct,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" />
+                                        <TextBlock Text="Default Height"  Grid.Row="11"/>
+                                        <TextBox Width="300" Grid.Row="12" Margin="0,0,0,40" Text="{Binding Path=NewDefaultHeight,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" />
+                                    </Grid>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Button FontSize="14" Height="30" Width="80" Content="Submit"
+                                                Command="{Binding Path=AddJobCommand}" x:Name="submitNewJob"
+                                                IsEnabled="{Binding Path=SubmitEnabled,Mode=OneWay}" Click="addNewJob_Click"/>
+                                        <Button FontSize="14" Height="30" Width="80" Content="Cancel" Margin="150,0,10,0" Click="cancelAddJob_Click"/>
+                                    </StackPanel>
+                                </StackPanel>
+                            </Flyout>
+                        </Button.Flyout>
+                    </Button>
+                </StackPanel>
+                
+                <StackPanel Grid.Column="1">
+                    <StackPanel Orientation="Horizontal" Height="25">
+                        <TextBlock Text="Company Name:" FontSize="16" FontWeight="Medium" />
+                        <TextBlock Text="{Binding Path=Clients}" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Height="25">
+                        <TextBlock Text="Contact:" FontSize="16" FontWeight="Medium" />
+                        <TextBlock Text="{Binding Path=Clients}" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Height="25">
+                        <TextBlock Text="Phone number:" FontSize="16" FontWeight="Medium" />
+                        <TextBlock Text="{Binding Path=Clients}" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Height="25">
+                        <TextBlock Text="Email:" FontSize="16" FontWeight="Medium" />
+                        <TextBlock Text="{Binding Path=Clients}" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Height="25">
+                        <TextBlock Text="status:" FontSize="16" FontWeight="Medium" />
+                        <TextBlock Text="{Binding Path=Clients}" />
+                    </StackPanel>
+                    
+                </StackPanel>
+            </Grid>
+            <Border BorderThickness="0,0,0,1" BorderBrush="Gray" Margin="10,0,20,10">
+            </Border>
+            <ListView>
+                <ListView ItemsSource="{Binding Jobs}" SelectedItem="{Binding SelectedUser}">
+                    <ListView.HeaderTemplate>
+                        <DataTemplate>
+                            <Grid Padding="12" >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition MinWidth="200"/>
+                                    <ColumnDefinition MinWidth="240"/>
+                                    <ColumnDefinition MinWidth="200"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                    <TextBlock Grid.Column="0" Text="Client Name"/>
+                                    <TextBlock Grid.Column="1" Text="Job Name"/>
+                                    <TextBlock Grid.Column="2" Text="Job Description"/>
+                            </Grid>
+                        </DataTemplate>
+                    </ListView.HeaderTemplate>
+                    <ListView.ItemTemplate>
+                        <DataTemplate x:Name="TableDataTemplate1" x:DataType="bo:Job">
+                            <Grid >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition MinWidth="200"/>
+                                    <ColumnDefinition MinWidth="240"/>
+                                    <ColumnDefinition MinWidth="200"/>
+                                    <ColumnDefinition Width="100"/>
+                                </Grid.ColumnDefinitions>
+                                
+                                <TextBlock Grid.Column="0" VerticalAlignment="Center" Text="{x:Bind Path=ClientName}" />
+                                <TextBlock Grid.Column="1" VerticalAlignment="Center" Text="{x:Bind Path=JobName}" />
+                                <TextBlock Grid.Column="2" VerticalAlignment="Center" Text="{x:Bind Path=JobDescription}" />
+                                <Button Grid.Column="3" VerticalAlignment="Center" Content="Delete" Background="Red" Foreground="White" >
+                                    <Button.Flyout>
+                                        <Flyout>
+                                            <Flyout.FlyoutPresenterStyle>
+                                                <Style TargetType="FlyoutPresenter">
+                                                    <Setter Property="Padding" Value="5,5,5,5"/>
+                                                    <Setter Property="Margin" Value="0, 0, 0, 0"/>
+                                                </Style>
+                                            </Flyout.FlyoutPresenterStyle>
+                                            <StackPanel>
+                                                <Border BorderThickness="0,0,0,1" BorderBrush="Gray" Margin="10,0,20,0">
+                                                    <TextBlock Text="Delete Job" Margin="0, 20, 10, 10"/>
+                                                </Border>
+                                                <TextBlock Text="You cannot undo this action" Margin="10, 20, 0, 40"/>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <Button FontSize="14" Height="30" Width="80" Margin="10, 0, 0, 20" 
+                                                            x:Name="notSure"  Click="Button_Click" Background="gray" 
+                                                            Foreground="white" Content="No"/>
+                                                    <Button  FontSize="14" Height="30" Width="80" Margin="100, 0, 0, 20" 
+                                                             Click="delteJob_Click" Background="Red" Foreground="white" 
+                                                             Content="Yes" x:Name="delteJob" IsEnabled="True"/>
+                                          
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </Flyout>
+                                    </Button.Flyout>
+                                </Button>
+                            </Grid>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+            </ListView>
+        </StackPanel>
+
+
+
+    </Grid>
+
+    <!--<Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
         <ListView>
             <ListView ItemsSource="{Binding Jobs}" Grid.Row="0" SelectedItem="{Binding SelectedUser}">
@@ -84,4 +285,5 @@
             </Button>
         </ListView>
     </Grid>
+    -->
 </Page>
