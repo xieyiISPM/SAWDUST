@@ -43,5 +43,19 @@ namespace SawDust.Views.Subviews.JobsTab
             // this.Del
             
         }
+
+        private void ListView_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            Job j = (Job) e.ClickedItem;
+            ((JobsTabVM)this.DataContext).SelectedJob = j;
+        }
+
+        private void ListView_DoubleTapped(object sender, DoubleTappedRoutedEventArgs e)
+        {
+            object o = sender;
+            // place holder for double click behavior. 
+            // single click selects item
+            // double click should open the next view in the flow
+        }
     }
 }

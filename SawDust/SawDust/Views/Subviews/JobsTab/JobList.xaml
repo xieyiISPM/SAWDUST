@@ -11,7 +11,7 @@
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
         <ListView>
-            <ListView ItemsSource="{Binding Jobs}" Grid.Row="0" SelectedItem="{Binding SelectedUser}">
+            <ListView ItemsSource="{Binding Jobs}" Grid.Row="0"  ItemClick="ListView_ItemClick" DoubleTapped="ListView_DoubleTapped" IsItemClickEnabled ="True">
                 <ListView.HeaderTemplate>
                     <DataTemplate>
                         <Grid Padding="12" >

@@ -31,7 +31,7 @@ namespace SawDust.ViewModel
         #endregion
 
         #region Properties
-
+        public Boolean TabsVisibility { get { return true; }  }
         private ObservableCollection<Client> _clients = new ObservableCollection<Client>();
         public ObservableCollection<Client> Clients
         {
@@ -63,7 +63,19 @@ namespace SawDust.ViewModel
             }
         }
 
-        
+        private object _selectedJob;
+        public object SelectedJob
+        {
+            get
+            {
+                return _selectedJob;
+            }
+            set
+            {
+                _selectedJob = value;
+            }
+        }
+
         private bool _submitEnabled = false;
         public bool SubmitEnabled
         {
@@ -105,41 +117,75 @@ namespace SawDust.ViewModel
                 SubmitEnabled = ValidateForm();
             }
         }
-        private Double? _newSalesTax;
-        public Double? NewSalesTax { get { return _newSalesTax; }
+        private string _newSalesTax;
+        public string NewSalesTax { get { return _newSalesTax; }
             set {
-                _newSalesTax = value;
-                OnPropertyChanged("NewSalesTax");
 
                 if (null != value)
                 {
-                    NewJob.SalesTax = value.Value;
-                    SubmitEnabled = ValidateForm();
+                    double tax;
+                    bool parse = Double.TryParse(value ,out tax);
+                    if (parse)
+                    {
+                        NewJob.SalesTax = tax;
+                        _newSalesTax = value;
+                        OnPropertyChanged("NewSalesTax");
+                        SubmitEnabled = ValidateForm();
+                    } else
+                    {
+                        _newSalesTax = null;
+                        OnPropertyChanged("NewSalesTax");
+                        SubmitEnabled = ValidateForm();
+                    }
+                   
                 }
             }
         }
 
-        private Double? _newDefaultHeight;
-        public Double? NewDefaultHeight { get { return _newDefaultHeight; }
+        private string _newDefaultHeight;
+        public string NewDefaultHeight { get { return _newDefaultHeight; }
             set {
-                _newDefaultHeight = value;
-                OnPropertyChanged("NewDefaultHeight");
+               
                 if (null != value)
                 {
-                    NewJob.DefaultHeight = value.Value; 
-                    SubmitEnabled = ValidateForm();
+                    double h;
+                    bool parse = Double.TryParse(value, out h);
+                    if (parse)
+                    {
+                        NewJob.DefaultHeight = h;
+                        _newDefaultHeight = value;
+                        OnPropertyChanged("NewDefaultHeight");
+                        SubmitEnabled = ValidateForm();
+                    } else
+                    {
+                        _newDefaultHeight = null;
+                        OnPropertyChanged("NewDefaultHeight");
+                        SubmitEnabled = ValidateForm();
+                    }
                 }
             }
         }
-        private Double? _newMarkupPct;
-        public Double? NewMarkupPct { get { return _newMarkupPct; }
+        private string _newMarkupPct;
+        public string NewMarkupPct { get { return _newMarkupPct; }
             set {
-                _newMarkupPct = value;
-                OnPropertyChanged("NewMarkupPct");
+                
                 if (null != value)
                 {
-                    NewJob.MarkupPct = value.Value; 
-                    SubmitEnabled = ValidateForm();
+                    double pct;
+                    bool parse = Double.TryParse(value, out pct);
+                    if (parse)
+                    {
+                        NewJob.MarkupPct = pct;
+                        _newMarkupPct = value;
+                        OnPropertyChanged("NewMarkupPct");
+                        SubmitEnabled = ValidateForm();
+                    }
+                    else
+                    {
+                        _newMarkupPct = null;
+                        OnPropertyChanged("NewMarkupPct");
+                        SubmitEnabled = ValidateForm();
+                    }
                 }               
             }
         }
@@ -210,8 +256,22 @@ namespace SawDust.ViewModel
         public bool ValidateForm() { 
         
             
-            bool status = true;
-           
+           bool status = true;
+            if (SelectedClient == null)
+                status = false;
+            else if (NewClientName == null)
+                status = false;
+            else if (NewDefaultHeight == null)
+                status = false;
+            else if (NewJobDescription == null)
+                status = false;
+            else if (NewJobName == null)
+                status = false;
+            else if (NewMarkupPct == null)
+                status = false;
+            else if (NewSalesTax == null)
+                status = false;
+
             return status;
         }
         #endregion
