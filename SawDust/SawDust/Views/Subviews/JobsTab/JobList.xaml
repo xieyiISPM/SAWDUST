@@ -117,23 +117,23 @@
                 <StackPanel Grid.Column="1">
                     <StackPanel Orientation="Horizontal" Height="25">
                         <TextBlock Text="Company Name:" FontSize="16" FontWeight="Medium" />
-                        <TextBlock Text="{Binding Path=Clients}" />
+                        <TextBlock Text="{Binding Path = ClientCompanyName, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" />
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Height="25">
                         <TextBlock Text="Contact:" FontSize="16" FontWeight="Medium" />
-                        <TextBlock Text="{Binding Path=Clients}" />
+                        <TextBlock Text="{Binding Path=Clients.ClientContactName}" />
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Height="25">
                         <TextBlock Text="Phone number:" FontSize="16" FontWeight="Medium" />
-                        <TextBlock Text="{Binding Path=Clients}" />
+                        <TextBlock Text="{Binding Path=Clients.ClientContactPhone}" />
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Height="25">
                         <TextBlock Text="Email:" FontSize="16" FontWeight="Medium" />
-                        <TextBlock Text="{Binding Path=Clients}" />
+                        <TextBlock Text="{Binding Path=Clients. ClientContactEmail}" />
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Height="25">
                         <TextBlock Text="status:" FontSize="16" FontWeight="Medium" />
-                        <TextBlock Text="{Binding Path=Clients}" />
+                        <TextBlock Text="{Binding Path=Clients.Status}" />
                     </StackPanel>
                     
                 </StackPanel>
