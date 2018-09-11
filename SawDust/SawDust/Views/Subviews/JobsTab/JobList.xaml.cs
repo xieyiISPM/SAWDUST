@@ -44,9 +44,10 @@ namespace SawDust.Views.Subviews.JobsTab
             {
                 Button b = sender as Button;
                 Grid g = b.Parent as Grid;
-                Button b2 = g.Parent as Button;
-                b2.Flyout.Hide();
-
+                Grid g2 = g.Parent as Grid;
+                FlyoutPresenter fp = g2.Parent as FlyoutPresenter;
+                Popup f = fp.Parent as Popup;
+                f.IsOpen = false;
             }
             catch { }
         }
