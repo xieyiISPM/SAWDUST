@@ -49,6 +49,8 @@ namespace SawDust.ViewModel
             set {
                 _selectedMainClient = value;
                 OnPropertyChanged("SelectedMainClient");
+                Jobs = new ObservableCollection<Job>(_dao.GetAllJobsByClient(SelectedMainClient));
+                OnPropertyChanged("Jobs");
             }
         }
         private ObservableCollection<Job> _jobs = new ObservableCollection<Job>();

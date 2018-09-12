@@ -249,6 +249,7 @@ namespace SawDust.DataAccess
                         var defaultHeight = dataReader["DefaultHeight"];
                         var insertEtime = dataReader["InsertEtime"];
                         var markupPct = dataReader["MarkupPct"];
+                        var clientName = dataReader["ClientName"];
 
                         job.ID = DBNull.Value == id ? -1L : (long)id;
                         job.ClientId = DBNull.Value == clientID ? -1L : (long)clientID;
@@ -258,6 +259,7 @@ namespace SawDust.DataAccess
                         job.DefaultHeight = DBNull.Value == defaultHeight ? 0.0 : (double)defaultHeight;
                         job.InsertEtime = DBNull.Value == insertEtime ? 0L : (long)insertEtime;
                         job.MarkupPct = DBNull.Value == markupPct ? 0.0 : (double)markupPct;
+                        job.ClientName = DBNull.Value == clientName ? null : clientName as string;
 
                     }
                 }
