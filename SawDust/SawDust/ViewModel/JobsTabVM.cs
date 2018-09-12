@@ -49,10 +49,31 @@ namespace SawDust.ViewModel
             set {
                 _selectedMainClient = value;
                 OnPropertyChanged("SelectedMainClient");
+                // set property changed on all of the client info that is displayed above the Jobs List
+                OnPropertyChanged("SelectedMainClientCompanyName");
+
                 Jobs = new ObservableCollection<Job>(_dao.GetAllJobsByClient(SelectedMainClient));
                 OnPropertyChanged("Jobs");
             }
         }
+
+
+        // Client Name Binding for the top of the Jobs list
+        // it needs to be a property to be bound
+        // it is read only so only the getter is needed
+        // I think you can get away from creating all of these properties if you implement INotifyPropertyChanged in the Client class
+        // then you can bind to SelectedMainClient.ClientCompanyName
+        public string SelectedMainClientCompanyName {
+            get
+            {
+                if (null == _selectedMainClient)
+                {
+                    return "";
+                }
+                return _selectedMainClient.ClientCompanyName;
+            }
+        }
+
         private ObservableCollection<Job> _jobs = new ObservableCollection<Job>();
         public ObservableCollection<Job> Jobs
         {
