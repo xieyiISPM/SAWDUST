@@ -45,5 +45,15 @@ namespace SawDust.Views
         {
 
         }
+
+        private void addNewClient_Click(object sender, RoutedEventArgs e)
+        {
+            NewClientFlyout.Flyout.Hide();
+        }
+
+        private void cancelNewClient_Click(object sender, RoutedEventArgs e)
+        {
+            NewClientFlyout.Flyout.Hide();
+        }
     }
 }

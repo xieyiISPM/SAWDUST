@@ -13,6 +13,155 @@
 
     </UserControl.Resources>
 
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Border BorderThickness="0,0,2,0" BorderBrush="Gray">
+            <StackPanel Grid.Column="0">
+                <TextBlock Text="Clients" FontSize="24" FontWeight="Bold" Margin="20,20,0,20"/>
+                <Border BorderThickness="0,0,0,1" BorderBrush="Gray" Margin="10,0,20,0">
+
+                </Border>
+
+                <ListView Grid.Column="0"   ItemsSource="{Binding Path=Clients}"  >
+                    <ListView.HeaderTemplate>
+                        <DataTemplate>
+                            <Grid Padding="12" >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition MinWidth="400"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Border BorderThickness="0,0,0,1" BorderBrush="Gray" Margin="10,0,280,10">
+                                    <TextBlock Grid.Column="0" Text="Company Name"  FontStyle="Italic" FontWeight="Medium"  Margin="0, 0, 0, 10" />
+                                </Border>
+                            </Grid>
+                        </DataTemplate>
+                    </ListView.HeaderTemplate>
+                    <ListView.ItemTemplate>
+                        <DataTemplate x:Name="TableDataTemplate" x:DataType="bo:Client">
+                            <Grid Height="48">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="250"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" VerticalAlignment="Center" Text="{x:Bind ClientCompanyName}" />
+                            </Grid>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackPanel>
+        </Border>
+
+
+        <StackPanel Grid.Column="1">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text=" Client Information" FontSize="24" Margin="20,20,0,20" FontWeight="Bold"/>
+                <Button x:Name="NewClientFlyout"  VerticalAlignment="Center" Content="Add Client"  FontSize="14" Height="30" Width="100" Margin="200, 20, 0, 10">
+                    <Button.Flyout>
+                        <Flyout>
+                            <Flyout.FlyoutPresenterStyle>
+                                <Style TargetType="FlyoutPresenter">
+                                    <Setter Property="Padding" Value="10,10,10,10"/>
+                                    <Setter Property="Margin" Value="10, 30, 10, 10"/>
+                                </Style>
+                            </Flyout.FlyoutPresenterStyle>
+                            <StackPanel>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                        
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Text="Add new client" Grid.Row="0" FontSize="20" Margin="0,0,0,30"/>
+
+                                    <TextBlock Text="Company Name" Grid.Row="1" />
+                                    <TextBox Width="300" Grid.Row="2" Margin="0,0,0,20" Text="{Binding Path=NewClientName,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+                                    <TextBlock Text="Contact" Grid.Row="3" />
+                                    <TextBox Width="300" Grid.Row="4" Margin="0,0,0,20" Text="{Binding Path=NewClientContact,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+                                    <TextBlock Text="Phone Number"  Grid.Row="5"/>
+                                    <TextBox Width="300" Grid.Row="6" Margin="0,0,0,20" Text="{Binding Path=NewClientPhone,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+                                    <TextBlock Text="Email"  Grid.Row="7"/>
+                                    <TextBox Width="300" Grid.Row="8" Margin="0,0,0,20" Text="{Binding Path=NewClientEmail,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" />
+                                    <TextBlock Text="Status"  Grid.Row="9"/>
+                                    <ComboBox Width="300" Margin="0,0,0,40" Grid.Row="10" ItemsSource="{Binding Path=Statuses}" SelectedItem="{Binding SelectedStateOption, Mode=TwoWay}" 
+                                              DisplayMemberPath="ComboBoxOption"/>
+                                </Grid>
+
+                                <StackPanel Orientation="Horizontal">
+                                    <Button FontSize="14" Height="30" Width="80" Content="Submit"
+                                            Command="{Binding Path=AddClientCommand}" x:Name="submitNewClientInfo"
+                                            IsEnabled="{Binding Path=SubmitNewClientEnabled,Mode=OneWay}" Click="addNewClient_Click"/>
+                                    <Button FontSize="14" Height="30" Width="80" Content="Cancel" Margin="150,0,10,0" Click="cancelNewClient_Click"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </Flyout>
+                    </Button.Flyout>
+                </Button>
+            </StackPanel>
+            
+            <Border BorderThickness="0,0,0,1" BorderBrush="Gray" Margin="10,0,20,10">
+            </Border>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <StackPanel Grid.Row="0" Grid.ColumnSpan="2">
+                    <TextBlock  Text="EDIT client" FontSize="20"  Margin="10, 0, 0, 50" FontWeight="Medium" />
+                    <Border BorderThickness="0,0,0,1" BorderBrush="Gray" Margin="10,0,20,10">
+                    </Border>
+                    <TextBlock Text="Company Name" FontSize="18"  Margin="10, 0, 0, 20" FontWeight="Medium" />
+                    <TextBox Margin="10, 0, 100, 40" Height="25" Text="{Binding Path=NewClientName,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" />
+                </StackPanel>
+
+                <StackPanel Grid.Row="1" Grid.Column="0">
+                    <TextBlock Text="Contact Person" FontSize="18"  Margin="10, 0, 0, 20" FontWeight="Medium" />
+                    <TextBox Margin="10, 0, 100, 40" Height="25" Text="{Binding Path=NewClientContact,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" />
+                </StackPanel>
+                <StackPanel Grid.Row="1" Grid.Column="1">
+                    <TextBlock Text="Email" FontSize="18"  Margin="10, 0, 0, 20" FontWeight="Medium" />
+                    <TextBox Margin="10, 0, 100, 40" Height="25" Text="{Binding Path=NewClientContact,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" />
+                </StackPanel>
+                <StackPanel Grid.Row="2" Grid.Column="0">
+                    <TextBlock Text="Contact Person" FontSize="18"  Margin="10, 0, 0, 20" FontWeight="Medium" />
+                    <TextBox Margin="10, 0, 100, 40" Height="25" Text="{Binding Path=NewClientContact,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" />
+                </StackPanel>
+                <StackPanel Grid.Row="2" Grid.Column="1">
+                    <TextBlock Text="Status" FontSize="18"  Margin="10, 0, 0, 20" FontWeight="Medium" />
+                    <TextBox Margin="10, 0, 100, 40" Height="25" Text="{Binding Path=NewClientContact,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" />
+                </StackPanel>
+
+                <Border Grid.Row="3" Grid.ColumnSpan="2" BorderThickness="0,0,0,1" BorderBrush="Gray" Margin="10,0,20,10">
+                </Border>
+                <Button Grid.Row="4" Grid.Column="0" Content="Update" VerticalAlignment="Center"  FontSize="14" Height="30" Width="100" HorizontalAlignment="Right" Margin="0, 20, 100, 10" />
+                <Button Grid.Row="4" Grid.Column="1" Content="Delet" Foreground="white" Background="red" VerticalAlignment="Center" HorizontalAlignment="Left"  FontSize="14" Height="30" Width="100" Margin="10, 20, 0, 10" />
+
+           </Grid>
+        </StackPanel>
+    </Grid>
+
+
+
+    <!--
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
@@ -89,5 +238,5 @@
         </ListView>
     </Grid>
 
-    
+  -->
 </UserControl>
