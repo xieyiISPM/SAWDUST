@@ -51,6 +51,10 @@ namespace SawDust.ViewModel
                 OnPropertyChanged("SelectedMainClient");
                 // set property changed on all of the client info that is displayed above the Jobs List
                 OnPropertyChanged("SelectedMainClientCompanyName");
+                OnPropertyChanged("SelectedMainClientContactName");
+                OnPropertyChanged("SelectedMainClientContactPhone");
+                OnPropertyChanged("SelectedMainClientContactEMail");
+                OnPropertyChanged("SelectedMainStatus");
 
                 Jobs = new ObservableCollection<Job>(_dao.GetAllJobsByClient(SelectedMainClient));
                 OnPropertyChanged("Jobs");
@@ -74,6 +78,53 @@ namespace SawDust.ViewModel
             }
         }
 
+        public string SelectedMainClientContactName
+        {
+            get
+            {
+                if (null == _selectedMainClient)
+                {
+                    return "";
+                }
+                return _selectedMainClient.ClientContactName;
+            }
+        }
+
+        public string SelectedMainClientContactPhone
+        {
+            get
+            {
+                if (null == _selectedMainClient)
+                {
+                    return "";
+                }
+                return _selectedMainClient.ClientContactPhone;
+            }
+        }
+
+        public string SelectedMainClientContactEMail
+        {
+            get
+            {
+                if (null == _selectedMainClient)
+                {
+                    return "";
+                }
+                return _selectedMainClient.ClientContactEMail;
+            }
+        }
+
+        public string SelectedMainStatus
+        {
+            get
+            {
+                if (null == _selectedMainClient)
+                {
+                    return "";
+                }
+                return _selectedMainClient.Status;
+            }
+        }
         private ObservableCollection<Job> _jobs = new ObservableCollection<Job>();
         public ObservableCollection<Job> Jobs
         {
