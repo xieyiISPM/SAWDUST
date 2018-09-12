@@ -115,25 +115,25 @@
                 </StackPanel>
                 
                 <StackPanel Grid.Column="1">
-                    <StackPanel Orientation="Horizontal" Height="25">
-                        <TextBlock Text="Company Name:" FontSize="16" FontWeight="Medium" />
-                        <TextBlock Text="{Binding Path = ClientCompanyName, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" />
+                    <StackPanel Orientation="Horizontal" Height="25" VerticalAlignment="Center" >
+                        <TextBlock Text="Company Name: " FontSize="16" FontWeight="Medium" />
+                        <TextBlock Margin="10, 2, 0, 0" Text="{Binding Path=SelectedMainClientCompanyName,UpdateSourceTrigger=PropertyChanged,Mode=OneWay}" />
                     </StackPanel>
-                    <StackPanel Orientation="Horizontal" Height="25">
+                    <StackPanel Orientation="Horizontal" Height="25" VerticalAlignment="Center" >
                         <TextBlock Text="Contact:" FontSize="16" FontWeight="Medium" />
-                        <TextBlock Text="{Binding Path=Clients.ClientContactName}" />
+                        <TextBlock Margin="10, 2, 0, 0"  Text="{Binding Path=SelectedMainClientContactName,UpdateSourceTrigger=PropertyChanged,Mode=OneWay}" />
                     </StackPanel>
-                    <StackPanel Orientation="Horizontal" Height="25">
+                    <StackPanel Orientation="Horizontal" Height="25" VerticalAlignment="Center">
                         <TextBlock Text="Phone number:" FontSize="16" FontWeight="Medium" />
-                        <TextBlock Text="{Binding Path=Clients.ClientContactPhone}" />
+                        <TextBlock Margin="10, 2, 0, 0"  Text="{Binding Path=SelectedMainClientContactPhone,UpdateSourceTrigger=PropertyChanged,Mode=OneWay}"/>
                     </StackPanel>
-                    <StackPanel Orientation="Horizontal" Height="25">
+                    <StackPanel Orientation="Horizontal" Height="25"  VerticalAlignment="Center">
                         <TextBlock Text="Email:" FontSize="16" FontWeight="Medium" />
-                        <TextBlock Text="{Binding Path=Clients. ClientContactEmail}" />
+                        <TextBlock Margin="10, 2, 0, 0"  Text="{Binding Path=SelectedMainClientContactEMail,UpdateSourceTrigger=PropertyChanged,Mode=OneWay}"/>
                     </StackPanel>
-                    <StackPanel Orientation="Horizontal" Height="25">
+                    <StackPanel Orientation="Horizontal" Height="25" VerticalAlignment="Center" >
                         <TextBlock Text="status:" FontSize="16" FontWeight="Medium" />
-                        <TextBlock Text="{Binding Path=Clients.Status}" />
+                        <TextBlock  Margin="10, 2, 0, 0"  Text="{Binding Path=SelectedMainStatus,UpdateSourceTrigger=PropertyChanged,Mode=OneWay}" />
                     </StackPanel>
                     
                 </StackPanel>
